@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/profile/updatedp', [ProfileController::class,'updateDP']);
     Route::post('/profile/updatesign', [ProfileController::class,'updateSign']);
     Route::post('/profile/updatepassword', [ProfileController::class, 'updatePassword']);
+
+    // User Account
+    Route::get('/users', [UsersController::class,'users'])->name('Users');
+    Route::get('/user/view/{id}', [UsersController::class,'view'])->name('User');
+
+    // User Account Requests
+    Route::post('/user/update', [UsersController::class,'updateUser']);
+    Route::post('/user/updatedp', [UsersController::class,'updateDP']);
+    Route::post('/user/updatesignature', [UsersController::class,'updateSignature']);
+    Route::post('/user/resetpassword', [UsersController::class,'resetPassword']);
+    Route::post('/user/addpermission', [UsersController::class,'addPermission']);
+    Route::post('/user/rempermission', [UsersController::class,'remPermission']);
+    Route::post('/user/activateuser', [UsersController::class,'activateUser']);
 });
