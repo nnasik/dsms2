@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +20,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::group(['middleware' => ['auth']], function () {
+
     // Profile
-    Route::get('/', 'ProfileController@profile')->name('Profile');
-    Route::get('/home', 'ProfileController@profile')->name('Profile');
-    Route::get('/profile', 'ProfileController@profile')->name('Profile');
+    Route::get('/', [ProfileController::class,'profile'])->name('Profile');
+    Route::get('/home', [ProfileController::class, 'profile'])->name('Profile');
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('Profile');
+
+    // Profile Requests
+    Route::post('/profile/update', [ProfileController::class,'updateProfile']);
+    Route::post('/profile/updatedp', [ProfileController::class,'updateDP']);
+    Route::post('/profile/updatesign', [ProfileController::class,'updateSign']);
+    Route::post('/profile/updatepassword', [ProfileController::class, 'updatePassword']);
 });
