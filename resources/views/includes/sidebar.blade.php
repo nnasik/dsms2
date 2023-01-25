@@ -53,7 +53,16 @@
         </li>
 
         <li class="nav-item">
-          <a href="/users" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
+          <a href="/mail" class="nav-link {{ request()->is('mail') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-envelope"></i>
+            <p>
+              Mail Tracking
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/users" class="nav-link {{ request()->is('users') ? 'active' : '' }}">
             <i class="nav-icon fas fa-users"></i>
             <p>
               Users

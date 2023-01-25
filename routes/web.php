@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +47,23 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/user/addpermission', [UsersController::class,'addPermission']);
     Route::post('/user/rempermission', [UsersController::class,'remPermission']);
     Route::post('/user/activateuser', [UsersController::class,'activateUser']);
+
+    // Mail
+    Route::get('/mail', [MailController::class,'dashboard'])->name('Mail');
+    Route::get('/mail/mails-all', [MailController::class,'allMails'])->name('All Mail');
+    Route::get('/mail/mails-new', [MailController::class, 'newMails'])->name('New Mail');
+    Route::get('/mail/mails-due', [MailController::class, 'dueMails'])->name('Due Mail');
+    Route::get('/mail/mails-overdue', [MailController::class,'overdueMails'])->name('Over Due Mail');
+    Route::get('/mail/mails-replied', [MailController::class,'repliedMails'])->name('Replied Mail');
+    Route::get('/mail/mails-temporary-replied', [MailController::class,'temporaryRepliedMails'])->name('Temporary Replied Mail');
+    Route::get('/mail/new', [MailController::class,'new'])-> name('New Mail');
+    Route::get('/mail/view/{id}', [MailController::class,'view'])-> name('New Mail');
+
+    // Mail Requests
+    Route::post('/mail/add', [MailController::class,'add']);
+    Route::post('/mail/update', [MailController::class,'update']);
+    Route::post('/mail/assign', [MailController::class,'assign']);
+    Route::post('/mail/updatereply', [MailController::class,'update_reply']);
+    Route::post('/mail/upload', [MailController::class,'uploadDocument']);
+    Route::post('/mail/uploadreply', [MailController::class,'upload_reply_document']);
 });
