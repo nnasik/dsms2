@@ -172,6 +172,7 @@ class MailController extends Controller
         ]);
         
 
+        
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
         }
