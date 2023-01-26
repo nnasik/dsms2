@@ -29,7 +29,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                @if(file_exists('storage/user/dp/'.$user->profile_pic))
+                                @if(isset(Auth::user()->profile_pic) && file_exists('storage/user/dp/'.$user->profile_pic))
                                 <img class="profile-user-img img-fluid img-circle" src="{{asset('storage/user/dp/'.$user->profile_pic)}}" alt="User profile picture">
                                 @else
                                 <img class="profile-user-img img-fluid img-circle" src="{{asset('storage/user/dp.png')}}" alt="User profile picture">
@@ -86,7 +86,7 @@
                                                 <input type="submit" id="user-signature-submit">
                                             </form>
                                         </div>
-                                        @if(file_exists('storage/user/signature/'.$user->signature))
+                                        @if(isset(Auth::user()->signature) && file_exists('storage/user/signature/'.$user->signature))
                                         <img class="mr-3" src="{{asset('storage/user/signature/'.$user->signature)}}" height="50" srcset="">
                                         @else
                                         <img src="{{asset('storage/user/signature.jpg')}}" height="50" srcset="">
