@@ -10,7 +10,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        @if(file_exists('storage/user/dp/'.Auth::user()->profile_pic))
+        @if(isset(Auth::user()->profile_pic) && file_exists('storage/user/dp/'.Auth::user()->profile_pic))
         <img src="{{asset('storage/user/dp/'.Auth::user()->profile_pic)}}" class="img-circle elevation-2" alt="User Image">
         @else
         <img src="{{asset('storage/user/dp.png')}}" class="img-circle elevation-2" alt="User Image">

@@ -51,7 +51,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-5 text-center">
-                                    @if(file_exists('storage/user/dp/'.$user->profile_pic))
+                                    @if(isset($user->profile_pic) && file_exists('storage/user/dp/'.$user->profile_pic))
                                     <img class="img-circle img-fluid" src="{{asset('storage/user/dp/'.$user->profile_pic)}}" alt="user-avatar">
                                     @else
                                     <img class="img-circle img-fluid" src="{{asset('storage/user/dp.png')}}" alt="user-avatar">

@@ -56,10 +56,8 @@
                                 </li>
 
                                 <li class="list-group-item p-1">
-
                                     <b>Signature</b> <a class="float-right">
-
-                                        @if(file_exists('storage/user/signature/'.$user->signature))
+                                        @if(isset($user->profile_pic) && file_exists('storage/user/signature/'.$user->signature))
                                         <img class="mr-3" src="{{asset('storage/user/signature/'.$user->signature)}}" height="50" srcset="">
                                         @else
                                         <img src="{{asset('storage/user/signature.jpg')}}" height="50" srcset="">
