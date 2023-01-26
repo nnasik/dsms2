@@ -23,8 +23,8 @@ class MailController extends Controller
         $today = date("Y-m-d");
         $data['mail_count_all'] = Mail::all()->count();
         $data['mail_count_new'] = Mail::whereDate('date_of_receipt','=',$today)->count();
-        $data['mail_count_due'] = Mail::whereDate('expected_date_of_reply' ,'=',$today)->count();
-        $data['mail_count_over_due'] = Mail::whereDate('expected_date_of_reply' ,'<',$today)->where('status','=','Assigned')->count();
+        $data['mail_count_due'] = Mail::whereDate('expected_date_of_reply' ,'=',$today)->where('status','<>','Replied')->count();
+        $data['mail_count_over_due'] = Mail::whereDate('expected_date_of_reply' ,'<',$today)->where('status','<>','Replied')->count();
         $data['mail_count_temporary'] = Mail::where('status','Temporary Reply')->count();
         $data['mail_count_replied'] = Mail::where('status','Replied')->whereDate('replied_date','=',$today)->count();
         // getting assigned mail for the logged in user.
