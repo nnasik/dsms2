@@ -43,6 +43,7 @@
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
+        @can('dashboard')
         <li class="nav-item">
           <a href="/" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -51,7 +52,9 @@
             </p>
           </a>
         </li>
+        @endcan
 
+        @can('view.mail')
         <li class="nav-item">
           <a href="/mail" class="nav-link {{ request()->is('mail') ? 'active' : '' }}">
             <i class="nav-icon fas fa-envelope"></i>
@@ -60,7 +63,9 @@
             </p>
           </a>
         </li>
+        @endcan
 
+        @can('manage.users')
         <li class="nav-item">
           <a href="/users" class="nav-link {{ request()->is('users') ? 'active' : '' }}">
             <i class="nav-icon fas fa-users"></i>
@@ -69,6 +74,7 @@
             </p>
           </a>
         </li>
+        @endcan
 
         <!--
           <li class="nav-item">

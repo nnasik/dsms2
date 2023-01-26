@@ -166,7 +166,7 @@
                             <!-- /input-group -->
                         </div>
                     </div>
-
+                    @can('manage.mail')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -175,6 +175,7 @@
                             <!-- /input-group -->
                         </div>
                     </div>
+                    @endcan
                 </div>
             </div>
         </form>

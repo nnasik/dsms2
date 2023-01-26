@@ -18,6 +18,7 @@ class MailController extends Controller
         // Getting logged in user's info
         $user = Auth::user();
         $user_id = Auth::user()->id;
+
         //Calculating Dashboard counts
         $today = date("Y-m-d");
         $data['mail_count_all'] = Mail::all()->count();
@@ -34,6 +35,13 @@ class MailController extends Controller
 
     public function view($id){
         $mail = Mail::find($id);
+        
+        // Checking for permissions
+        if(!(Auth::user()->hasPermissionTo('manage.mail') || Auth::user()->hasPermissionTo('summary.mail') || $mail->assigned_to == Auth::user()->id)){
+            Session::flash('danger',"Access Restricted");
+            return Redirect::back();
+        }
+        
         $data['mail'] = $mail;
         $data['users'] = User::where('status','Active')->get();
         $data['notes'] = $mail->notes->reverse();
@@ -41,6 +49,11 @@ class MailController extends Controller
     }
 
     public function new(){
+        if(!Auth::user()->hasPermissionTo('manage.mail')){
+            Session::flash('danger',"Access Restricted");
+            return Redirect::back();
+        }
+
         $data['users'] = User::where('status','Active')->get();
         return view('features.mail.new')->with($data);
     }
@@ -48,6 +61,11 @@ class MailController extends Controller
     public function add(Request $request){
         $user = Auth::user();
         $user_id = Auth::user()->id;
+
+        if(!Auth::user()->hasPermissionTo('manage.mail')){
+            Session::flash('danger',"Access Restricted");
+            return Redirect::back();
+        }
 
         $request->validate([
             'inward_mode'=>'required',
@@ -92,6 +110,12 @@ class MailController extends Controller
 
     public function update(Request $request){
         $user = Auth::user();
+
+        if(!Auth::user()->hasPermissionTo('manage.mail')){
+            Session::flash('danger',"Access Restricted");
+            return Redirect::back();
+        }
+
         $user_id = Auth::user()->id;
 
         $request->validate([
@@ -138,13 +162,19 @@ class MailController extends Controller
     }
 
     public function assign(Request $request){
-        $user = Auth::user();
-        $user_id = Auth::user()->id;
+
+        if(!Auth::user()->hasPermissionTo('manage.mail')){
+            Session::flash('danger',"Access Restricted");
+            return Redirect::back();
+        }
 
         $request->validate([
             'id'=>'required',
             'assigned_to'=>'required'
         ]);
+
+        $user = Auth::user();
+        $user_id = Auth::user()->id;
 
         $mail = Mail::find($request->id);
         $mail->assigned_to = $request->assigned_to;
@@ -164,6 +194,10 @@ class MailController extends Controller
 
     public function uploadDocument(Request $request){
 
+        if(!Auth::user()->hasPermissionTo('manage.mail')){
+            Session::flash('danger',"Access Restricted");
+            return Redirect::back();
+        }
         
         $validator = Validator::make($request->all(),[
             'id'=>'required',
@@ -172,7 +206,6 @@ class MailController extends Controller
         ]);
         
 
-        
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
         }
@@ -191,11 +224,20 @@ class MailController extends Controller
     }
 
     public function upload_reply_document(Request $request){
+
         $validator = Validator::make($request->all(),[
             'mail_id'=>'required',
             'reply_document'=>'required|mimes:pdf,jpg,jpeg,png|max:10240',
             'reply_document_no'=>'required'
         ]);
+
+        $mail = Mail::find($request->id);
+
+         // Checking for permissions
+        if(!$mail->assigned_to == Auth::user()->id){
+            Session::flash('danger',"Access Restricted");
+            return Redirect::back();
+        }
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
@@ -215,7 +257,6 @@ class MailController extends Controller
     }
 
     public function update_reply(Request $request){
-        $user_id = Auth::user()->id;
 
         $request->validate([
             'mail_id'=>'required',
@@ -226,11 +267,20 @@ class MailController extends Controller
             'replied_date'=>'required'
         ]);
 
+        $mail = Mail::find($request->mail_id);
+
+         // Checking for permissions
+        if(!$mail->assigned_to == Auth::user()->id){
+            Session::flash('danger',"Access Restricted");
+            return Redirect::back();
+        }
+
+        $user_id = Auth::user()->id;
+
         // Creating Note
         $note = new Note;
         $note->user_id = $user_id;
 
-        $mail = Mail::find($request->mail_id);
         $note->body = 'Mail status changed. '.$mail->status.' --> ';
         $mail->status = $request->status;
         $mail->outward_mode = $request->outward_mode;

@@ -14,14 +14,13 @@ use Validator as Validator;
 class UsersController extends Controller
 {
     public function users(){
-        // Cheking for Permission
+        //Cheking for Permission
         $current_user = Auth::user();
-        /*
-        if(!$current_user->hasPermissionTo('users.users')){
+        
+        if(!$current_user->hasPermissionTo('manage.users')){
             Session::flash('danger',"Access Restricted");
             return Redirect::back();
         }
-        */
 
         $users = User::all();
         $data['users'] = $users;
@@ -30,13 +29,12 @@ class UsersController extends Controller
 
     public function view($id){
         // Cheking for Permission
+        $current_user = Auth::user();
         
-        /*
-        if(!$current_user->hasPermissionTo('users.manage')){
+        if(!$current_user->hasPermissionTo('manage.users')){
             Session::flash('danger',"Access Restricted");
             return Redirect::back();
         }
-        */
         
         $data['permissions'] = Permission::all();
         
@@ -51,7 +49,7 @@ class UsersController extends Controller
     public function addPermission(Request $request){
         // Cheking for Permission
         $current_user = Auth::user();
-        if(!$current_user->hasPermissionTo('users.manage')){
+        if(!$current_user->hasPermissionTo('manage.users')){
             Session::flash('danger',"Access Restricted");
             return Redirect::back();
         }
@@ -71,7 +69,7 @@ class UsersController extends Controller
     public function remPermission(Request $request){
         // Cheking for Permission
         $current_user = Auth::user();
-        if(!$current_user->hasPermissionTo('users.manage')){
+        if(!$current_user->hasPermissionTo('manage.users')){
             Session::flash('danger',"Access Restricted");
             return Redirect::back();
         }
@@ -92,7 +90,7 @@ class UsersController extends Controller
     public function activateUser(Request $request){
         // Cheking for Permission
         $current_user = Auth::user();
-        if(!$current_user->hasPermissionTo('users.manage')){
+        if(!$current_user->hasPermissionTo('manage.users')){
             Session::flash('danger',"Access Restricted");
             return Redirect::back();
         }
@@ -113,7 +111,7 @@ class UsersController extends Controller
     public function resetPassword(Request $request){
         // Cheking for Permission
         $current_user = Auth::user();
-        if(!$current_user->hasPermissionTo('users.manage')){
+        if(!$current_user->hasPermissionTo('manage.users')){
             Session::flash('danger',"Access Restricted");
             return Redirect::back();
         }
@@ -136,7 +134,7 @@ class UsersController extends Controller
 
         // Cheking for Permission
         $current_user = Auth::user();
-        if(!$current_user->hasPermissionTo('users.manage')){
+        if(!$current_user->hasPermissionTo('manage.users')){
             Session::flash('danger',"Access Restricted");
             return Redirect::back();
         }
@@ -166,7 +164,7 @@ class UsersController extends Controller
     public function updateSign(Request $request){
         // Cheking for Permission
         $current_user = Auth::user();
-        if(!$current_user->hasPermissionTo('users.manage')){
+        if(!$current_user->hasPermissionTo('manage.users')){
             Session::flash('danger',"Access Restricted");
             return Redirect::back();
         }

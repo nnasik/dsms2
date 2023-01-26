@@ -23,25 +23,28 @@
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
+      @can('summary.mail')
       <div class="row">
         <h5 class="m-2">Summary of Mails</h5>
       </div>
-
+     
       <!-- Small boxes (Stat box) -->
       <div class="row">
         @include('features.mail.dashboard.summary')
       </div>
       <!-- /.row -->
-
+      @endcan()
 
 
       <div class="row">
         <div class="col-9">
           <h5 class="m-2">My Mails</h5>
         </div>
+        @can('manage.mail')
         <div class="col-3 float-right">
           <a href="/mail/new" class="btn btn-block btn-success align-right"><i class="fa fa-solid fa-plus"></i> New</a>
         </div>
+        @endcan
       </div>
 
       <!-- Small boxes (Stat box) -->
