@@ -157,26 +157,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">
-                                                Assigned To
-                                                </span>
-                                            </div>
-                                            
-                                            <select class="custom-select form-control" id="assigned_to" name="assigned_to">
-                                                <option value="">Select Officer</option>
-                                                @foreach($users as $user)   
-                                                    <option value="{{$user->id}}">{{$user->name}} - {{$user->designation}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <!-- /input-group -->
-                                    </div>
-                                </div>
-
                             <div class="card-footer mt-2 text-right">
                                 <button type="submit" class="btn btn-success">Save Mail</button>
                             </div>
