@@ -167,25 +167,6 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">
-                                                Assigned To
-                                                </span>
-                                            </div>
-                                            
-                                            <select class="custom-select form-control" id="assigned_to" name="assigned_to">
-                                                @foreach($users as $user)   
-                                                    <option value="{{$user->id}}">{{$user->name}} - {{$user->designation}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <!-- /input-group -->
-                                    </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-lg-1 col-4  mb-3">
                                         <img src="/img/mail/add_file.png" class="d-flex" role="button" width="90" alt="">
                                     </div>

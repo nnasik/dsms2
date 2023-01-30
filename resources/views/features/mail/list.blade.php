@@ -27,10 +27,12 @@
                 <div class="col-9">
                     <h5 class="m-2">{{$heading}}</h5>
                 </div>
+                @can('manage.mail')
                 <div class="col-3 float-right">
                     <a href="/mail/new" class="btn btn-block btn-success align-right"><i
                             class="fa fa-solid fa-plus"></i> New</a>
                 </div>
+                @endcan
             </div>
             <div class="row mt-2">
                 <!-- left column -->
