@@ -49,6 +49,7 @@
             @include('features.mail.view.inward_data')
             @include('features.mail.view.mail_document')
             @include('features.mail.view.assigned_data')
+            @include('features.mail.view.subject_officer')
             @include('features.mail.view.reply_data')
             @include('features.mail.view.reply_document')
             @include('features.mail.view.history')
@@ -65,13 +66,14 @@
         $("#document_no").val(document_no);
         $("#mail-document-form").submit();
     }
-    function replyDocumentSelector() {
+
+    function selectReplyDocument(document_no) {
+        $("#reply-document-no").val(document_no);
         $("#reply-document").click();
     }
 
-    function uploadReplyDocument(document_no) {
-        $("#reply-document-no").val(document_no);
-        $("#reply-form").submit();
+    function uploadReplyDocument() {
+        $("#reply-document-form").submit();
     }
 </script>
 @endsection

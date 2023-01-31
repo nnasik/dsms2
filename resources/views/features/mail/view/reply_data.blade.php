@@ -91,9 +91,11 @@
 
                     <div class="row">
                         <div class="col-md-6">
+                            @if($mail->assigned_to == Auth::user()->id || $mail->subject_officer == Auth::user()->id)
                             <form action="/mail/updatereply" id="reply-form" method="POST">
                                 @csrf
                                 <input type="hidden" name="mail_id" value="{{$mail->id}}">
+                                @endif
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
@@ -123,10 +125,11 @@
                             </div>
                             <!-- /input-group -->
                         </div>
-
+                        @if($mail->assigned_to == Auth::user()->id || $mail->subject_officer == Auth::user()->id)
                         <div class="col-md-1">
                             <button type="submit" class="btn btn-success">Update</button>
                         </div>
+                        @endif
                     </div>
                 </form>
             </div>

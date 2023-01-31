@@ -13,6 +13,10 @@ class Mail extends Model
         return $this->belongsTo(User::class,'assigned_to');
     }
 
+    public function subjectOfficer(){
+        return $this->belongsTo(User::class,'subject_officer');
+    }
+
     public function dataEnteredBy(){
         return $this->belongsTo(User::class,'user_id');
     }

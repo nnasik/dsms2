@@ -35,6 +35,7 @@ return new class extends Migration
 
             $table->string('assigned_to')->nullable();
             $table->datetime('assigned_on')->nullable();
+
             $table->string('outward_mode')->nullable();
             $table->string('outward_register_reference')->nullable();
 

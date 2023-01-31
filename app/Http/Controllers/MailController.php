@@ -26,6 +26,7 @@ class MailController extends Controller
         $data['mail_count_due'] = Mail::whereDate('expected_date_of_reply' ,'=',$today)->where('status','<>','Replied')->count();
         $data['mail_count_over_due'] = Mail::whereDate('expected_date_of_reply' ,'<',$today)->where('status','<>','Replied')->count();
         $data['mail_count_temporary'] = Mail::where('status','Temporary Reply')->count();
+        $data['mail_count_non_assigned'] = Mail::where('assigned_to',NULL)->count();
         $data['mail_count_replied'] = Mail::where('status','Replied')->whereDate('replied_date','=',$today)->count();
         // getting assigned mail for the logged in user.
 
@@ -192,6 +193,39 @@ class MailController extends Controller
         return Redirect::back();
     }
 
+    public function assignSubjectOfficer(Request $request){
+
+        $request->validate([
+            'id'=>'required',
+            'subject_officer'=>'required'
+        ]);
+
+        $mail = Mail::find($request->id);
+
+        if(!$mail->assigned_to == Auth::user()->id){
+            Session::flash('danger',"Access Restricted");
+            return Redirect::back();
+        }
+
+        $user = Auth::user();
+        $user_id = Auth::user()->id;
+
+        
+        $mail->subject_officer = $request->subject_officer;
+        $mail->subject_officer_on = date('Y-m-d H:i:s');
+        $mail->status = 'Assigned';
+        $mail->save();
+
+        // Creating Note
+        $note = new Note;
+        $note->user_id = $user_id;
+        $note->body = 'Subject officer assigned.( ' .$mail->subjectOfficer->name. "(".$mail->subjectOfficer->designation.")";
+        $mail->notes()->save($note);
+
+        Session::flash('success',$note->body);
+        return Redirect::back();
+    }
+
     public function uploadDocument(Request $request){
 
         if(!Auth::user()->hasPermissionTo('manage.mail')){
@@ -215,7 +249,13 @@ class MailController extends Controller
         if (isset($request->id)) {
             $document = $mail->id."_".$request->document_no.".".$request->document->extension();
             $request->document->storeAs('public/mail/', $document);
-            $mail->document_1 = $document;
+            if($request->document_no==1){
+                $mail->document_1 = $document;
+            }
+            elseif($request->document_no==2){
+                $mail->document_2 = $document;
+            }
+            
             $mail->save();
         }
 
@@ -226,15 +266,15 @@ class MailController extends Controller
     public function upload_reply_document(Request $request){
 
         $validator = Validator::make($request->all(),[
-            'mail_id'=>'required',
-            'reply_document'=>'required|mimes:pdf,jpg,jpeg,png|max:10240',
+            'id'=>'required',
+            'reply_document'=>'required|mimes:pdf,jpg,jpeg,png,doc,docx,xls,xlsx|max:10240',
             'reply_document_no'=>'required'
         ]);
 
         $mail = Mail::find($request->id);
 
          // Checking for permissions
-        if(!$mail->assigned_to == Auth::user()->id){
+        if(!($mail->assigned_to == Auth::user()->id || $mail->subject_officer == Auth::user()->id)){
             Session::flash('danger',"Access Restricted");
             return Redirect::back();
         }
@@ -243,12 +283,18 @@ class MailController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        $mail = Mail::find($request->mail_id);
+        $mail = Mail::find($request->id);
         
-        if (isset($request->mail_id)) {
+        if (isset($request->id)) {
             $reply_document = "r_".$mail->id."_".$request->reply_document_no.".".$request->reply_document->extension();
             $request->reply_document->storeAs('public/mail/', $reply_document);
-            $mail->reply_document_1 = $reply_document;
+            if ($request->reply_document_no==1) {
+                $mail->reply_document_1 = $reply_document;
+            }
+            elseif($request->reply_document_no==2){
+                $mail->reply_document_2 = $reply_document;
+            }
+            
             $mail->save();
         }
 
@@ -270,7 +316,7 @@ class MailController extends Controller
         $mail = Mail::find($request->mail_id);
 
          // Checking for permissions
-        if(!$mail->assigned_to == Auth::user()->id){
+        if(!($mail->assigned_to == Auth::user()->id || $mail->subject_officer == Auth::user()->id)){
             Session::flash('danger',"Access Restricted");
             return Redirect::back();
         }
@@ -322,7 +368,7 @@ class MailController extends Controller
 
     public function overdueMails(){
         $today = date("Y-m-d");
-        $data['mails'] = Mail::whereDate('expected_date_of_reply','<',$today)->get();
+        $data['mails'] = Mail::whereDate('expected_date_of_reply' ,'<',$today)->where('status','<>','Replied')->get();
         $data['heading'] = "Over Due Mails";
         return view('features.mail.list')->with($data);
     }
@@ -338,6 +384,13 @@ class MailController extends Controller
         $today = date("Y-m-d");
         $data['mails'] = Mail::where('status','Temporary Reply')->get();
         $data['heading'] = "Temporary Replied Mails";
+        return view('features.mail.list')->with($data);
+    }
+
+    public function nonAssignedMails(){
+        $today = date("Y-m-d");
+        $data['mails'] = Mail::where('assigned_to',NULL)->get();
+        $data['heading'] = "Non Assigned Mails";
         return view('features.mail.list')->with($data);
     }
 }
