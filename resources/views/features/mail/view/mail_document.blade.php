@@ -12,6 +12,7 @@
                     <div class="row">
                         <input type="hidden" name="id" value="{{$mail->id}}" />
                         <input type="hidden" name="document_no" id="document_no" value="0" />
+                        <input type="file" name="document" id="document" onchange="uploadMailDocument()" hidden />
                         <div class="col-lg-1 col-4">
                             @php
                             $pieces = explode(".", $mail->document_1);
@@ -24,8 +25,8 @@
                                 </a>
                             @else
                                 @can('manage.mail')
-                                <img src="/img/mail/add_file.png" role="button" width="90" onclick="documentSelector()" />
-                                <input type="file" name="document" id="document" onchange="uploadDocument(1)" hidden />
+                                <img src="/img/mail/add_file.png" role="button" width="90" onclick="selectMailDocument(1)" />
+                                
                                 @endcan
                             @endif
                         </div>
@@ -41,8 +42,7 @@
                                 </a>
                             @else
                                 @can('manage.mail')
-                                <img src="/img/mail/add_file.png" role="button" width="90" onclick="documentSelector()" />
-                                <input type="file" name="document" id="document" onchange="uploadDocument(2)" hidden />
+                                <img src="/img/mail/add_file.png" role="button" width="90" onclick="selectMailDocument(2)" />
                                 @endcan
                             @endif
                         </div>

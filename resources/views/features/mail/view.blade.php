@@ -58,12 +58,12 @@
     </section>
 </div>
 <script>
-    function documentSelector() {
+    function selectMailDocument(document_no) {
+        $("#document_no").val(document_no);
         $("#document").click();
     }
 
-    function uploadDocument(document_no) {
-        $("#document_no").val(document_no);
+    function uploadMailDocument() {
         $("#mail-document-form").submit();
     }
 
