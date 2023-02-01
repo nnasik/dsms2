@@ -29,6 +29,23 @@
                                 @endcan
                             @endif
                         </div>
+                        <div class="col-lg-1 col-4">
+                            @php
+                            $pieces = explode(".", $mail->document_2);
+                            @endphp
+
+                            @if(isset($mail->document_2) && file_exists('storage/mail/'.$mail->document_2))
+                                <a target="_new" href="/storage/mail/{{$mail->document_2}}">
+                                    <img src="/img/mail/{{$pieces[count($pieces)-1]}}.png" role="button" width="90" />
+                                    <p class="d-flex justify-content-center">{{$mail->document_2}}</p>
+                                </a>
+                            @else
+                                @can('manage.mail')
+                                <img src="/img/mail/add_file.png" role="button" width="90" onclick="documentSelector()" />
+                                <input type="file" name="document" id="document" onchange="uploadDocument(2)" hidden />
+                                @endcan
+                            @endif
+                        </div>
                     </div>
                 </form>
             </div>

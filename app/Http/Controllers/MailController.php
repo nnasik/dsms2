@@ -210,10 +210,8 @@ class MailController extends Controller
         $user = Auth::user();
         $user_id = Auth::user()->id;
 
-        
         $mail->subject_officer = $request->subject_officer;
         $mail->subject_officer_on = date('Y-m-d H:i:s');
-        $mail->status = 'Assigned';
         $mail->save();
 
         // Creating Note
@@ -235,7 +233,7 @@ class MailController extends Controller
         
         $validator = Validator::make($request->all(),[
             'id'=>'required',
-            'document'=>'required|mimes:pdf,jpg,jpeg,png|max:10240',
+            'document'=>'required|mimes:pdf,jpg,jpeg,png,doc,docx,xls,xlsx|max:10240',
             'document_no'=>'required'
         ]);
         
