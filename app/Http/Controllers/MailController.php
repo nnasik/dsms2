@@ -179,6 +179,7 @@ class MailController extends Controller
 
         $mail = Mail::find($request->id);
         $mail->assigned_to = $request->assigned_to;
+        $mail->note_to_assigned_officer = $request->note_to_assigned_officer;
         $mail->assigned_on = date('Y-m-d H:i:s');
         $mail->status = 'Assigned';
         $mail->save();
@@ -212,6 +213,7 @@ class MailController extends Controller
 
         $mail->subject_officer = $request->subject_officer;
         $mail->subject_officer_on = date('Y-m-d H:i:s');
+        $mail->note_to_subject_officer = $request->note_to_subject_officer;
         $mail->save();
 
         // Creating Note
@@ -331,6 +333,7 @@ class MailController extends Controller
         $mail->file_no = $request->file_no;
         $mail->outward_register_reference = $request->outward_register_reference;
         $mail->replied_date = $request->replied_date;
+        $mail->reply_note = $request->reply_note;
         $mail->save();
         
         $note->body = $note->body .$mail->status. " with outward register reference - ". $request->outward_register_reference . " on ". $request->replied_date;

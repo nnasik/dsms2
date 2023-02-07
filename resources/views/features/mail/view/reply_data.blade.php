@@ -90,7 +90,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-3">
                             @if($mail->assigned_to == Auth::user()->id || $mail->subject_officer == Auth::user()->id)
                             <form action="/mail/updatereply" id="reply-form" method="POST">
                                 @csrf
@@ -112,7 +112,7 @@
                                 <!-- /input-group -->
                         </div>
 
-                        <div class="col-md-5 ">
+                        <div class="col-md-6 ">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
@@ -125,7 +125,26 @@
                             </div>
                             <!-- /input-group -->
                         </div>
+                        
+                    </div>
+                    <div class="row">
+
+
+
                         @if($mail->assigned_to == Auth::user()->id || $mail->subject_officer == Auth::user()->id)
+                        <div class="col-md-11 ">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Reply Note
+                                    </span>
+
+                                </div>
+                                <input name="reply_note" type="text" value="{{$mail->reply_note}}"
+                                    class="form-control" />
+                            </div>
+                            <!-- /input-group -->
+                        </div>
                         <div class="col-md-1">
                             <button type="submit" class="btn btn-success">Update</button>
                         </div>
