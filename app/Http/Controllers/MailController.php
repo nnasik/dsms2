@@ -30,7 +30,7 @@ class MailController extends Controller
         $data['mail_count_replied'] = Mail::where('status','Replied')->whereDate('replied_date','=',$today)->count();
         // getting assigned mail for the logged in user.
 
-        $data['my_mails'] = Mail::where('assigned_to',$user->id)->get();
+        $data['my_mails'] = Mail::where('assigned_to',$user->id)->orWhere('subject_officer',$user->id)->get();
         return view('features.mail.dashboard')->with($data);
     }
 

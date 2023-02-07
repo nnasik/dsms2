@@ -7,7 +7,6 @@
 
 <title>DSMS</title>
 
-
 <link rel="shortcut icon" sizes="16x16" href="{{asset('dist/img/logo.png')}}">
 <link rel="shortcut icon" sizes="196x196" href="{{asset('dist/img/logo.png')}}">
 <link rel="apple-touch-icon-precomposed" href="{{asset('dist/img/logo.png')}}">
@@ -20,7 +19,7 @@
 <!-- Ionicons -->
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <!-- Tempusdominus Bootstrap 4 -->
-<link rel="stylesheet" href="{{asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
 <!-- iCheck -->
 <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 <!-- JQVMap -->
@@ -33,6 +32,7 @@
 <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
 <!-- summernote -->
 <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
+
 <!-- Custom CSS-->
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 

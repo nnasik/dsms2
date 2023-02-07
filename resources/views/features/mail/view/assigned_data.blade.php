@@ -36,7 +36,14 @@
                                 <select class="custom-select form-control" id="assigned_to" name="assigned_to">
                                     <option value="">Select Officer</option>
                                     @foreach($users as $user)
-                                    <option value="{{$user->id}}" {{$user->id===$mail->assigned_to ?
+                                    <option 
+                                        @if(file_exists('storage/user/dp/'. $user->profile_pic))
+                                        data-thumbnail={{asset('storage/user/dp/'.$user->profile_pic)}}
+                                        @else
+                                        data-thumbnail={{asset('storage/user/dp.png')}}
+                                        @endif
+                                        
+                                         value="{{$user->id}}" {{$user->id===$mail->assigned_to ?
                                         "selected":""}}>{{$user->name}} - {{$user->designation}}</option>
                                     @endforeach
                                 </select>
