@@ -104,8 +104,10 @@
                                     </div>
                                     <select class="custom-select form-control" id="status" name="status">
                                         <option value="">Select New Status</option>
-                                        <option value="Temporary Reply" @if($mail->status=='Temporary Reply') selected @endif>Temporary Reply</option>
-                                        <option value="Replied" @if($mail->status=='Replied') selected @endif>Replied</option>
+                                        <option value="Temporary Reply" @if($mail->status=='Temporary Reply') selected
+                                            @endif>Temporary Reply</option>
+                                        <option value="Replied" @if($mail->status=='Replied') selected @endif>Replied
+                                        </option>
                                     </select>
                                 </div>
 
@@ -120,18 +122,14 @@
                                     </span>
 
                                 </div>
-                                <input name="outward_register_reference" type="text" value="{{$mail->outward_register_reference}}"
-                                    class="form-control" />
+                                <input name="outward_register_reference" type="text"
+                                    value="{{$mail->outward_register_reference}}" class="form-control" />
                             </div>
                             <!-- /input-group -->
                         </div>
-                        
+
                     </div>
                     <div class="row">
-
-
-
-                        @if($mail->assigned_to == Auth::user()->id || $mail->subject_officer == Auth::user()->id)
                         <div class="col-md-11 ">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -145,6 +143,8 @@
                             </div>
                             <!-- /input-group -->
                         </div>
+                        @if($mail->assigned_to == Auth::user()->id || $mail->subject_officer == Auth::user()->id)
+
                         <div class="col-md-1">
                             <button type="submit" class="btn btn-success">Update</button>
                         </div>
