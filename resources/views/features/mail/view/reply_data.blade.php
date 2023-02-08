@@ -114,7 +114,7 @@
                                 <!-- /input-group -->
                         </div>
 
-                        <div class="col-md-6 ">
+                        <div class="col-md-6 mb-3 ">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
