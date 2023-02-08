@@ -70,7 +70,7 @@
                                 </div>
                                 <!-- /input-group -->
                             </div>
-                            @if($mail->assigned_to == Auth::user()->id)
+                            
                             <div class="row">
                                 <div class="col-md-10 mb-3">
                                     <div class="input-group">
@@ -83,14 +83,16 @@
                                     </div>
                                     <!-- /input-group -->
                                 </div>
+                                @if($mail->assigned_to == Auth::user()->id)
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <input type="submit" value="Update" class="btn btn-success float-right">
                                     </div>
                                     <!-- /input-group -->
                                 </div>
+                                @endif
                             </div>
-                            @endif
+                            
                         </div>
 
                     </div>
