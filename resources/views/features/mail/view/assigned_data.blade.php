@@ -84,7 +84,7 @@
                                         </div>
                                         <input type="text" class="form-control" name="note_to_assigned_officer" value="{{$mail->note_to_assigned_officer}}" />
                                     </div>
-                                    <!-- /input-group -->
+                                    <!-- /input-group -->                          
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
@@ -105,3 +105,23 @@
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    $('#assigned_to').select2({
+        ajax: {
+            url: '/ajax/user-autocomplete-search',
+            dataType: 'json',
+            delay: 250,
+            processResults: function (data) {
+                return {
+                    results: $.map(data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        }
+                    })
+                };
+            },
+            cache: true
+        }
+    });
+</script>

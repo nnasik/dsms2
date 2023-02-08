@@ -192,6 +192,16 @@ class UsersController extends Controller
         return Redirect::back();
     }
 
+    public function selectSearch(Request $request){
+        $users = [];
+        if($request->has('q')){
+            $keyword = $request->q;
+            $users = User::select("id","name")->where('name', 'LIKE', "%$keyword%")->orWhere('id', 'LIKE', "%$keyword%")->get();
+
+        }
+        return response()->json($users);
+    }
+
     private function generateRandomString($length = 10) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
         $charactersLength = strlen($characters);

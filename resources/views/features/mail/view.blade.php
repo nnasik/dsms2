@@ -18,6 +18,10 @@
 
 @section('content')
 <div class="content-wrapper">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="{{asset('css/select2.min.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -76,4 +80,5 @@
         $("#reply-document-form").submit();
     }
 </script>
+
 @endsection

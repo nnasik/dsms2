@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
     // User Account
     Route::get('/users', [UsersController::class,'users'])->name('Users');
     Route::get('/user/view/{id}', [UsersController::class,'view'])->name('User');
+    Route::get('/ajax/user-autocomplete-search', [UsersController::class,'selectSearch']);
 
     // User Account Requests
     Route::post('/user/update', [UsersController::class,'updateUser']);
