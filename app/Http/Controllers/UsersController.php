@@ -196,7 +196,7 @@ class UsersController extends Controller
         $users = [];
         if($request->has('q')){
             $keyword = $request->q;
-            $users = User::select("id","name")->where('name', 'LIKE', "%$keyword%")->orWhere('id', 'LIKE', "%$keyword%")->get();
+            $users = User::select("id","name","designation")->where('name', 'LIKE', "%$keyword%")->orWhere('id', 'LIKE', "%$keyword%")->get();
 
         }
         return response()->json($users);

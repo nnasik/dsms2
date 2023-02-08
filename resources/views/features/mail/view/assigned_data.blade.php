@@ -115,7 +115,7 @@
                 return {
                     results: $.map(data, function (item) {
                         return {
-                            text: item.name,
+                            text: item.name + " - " + item.designation,
                             id: item.id
                         }
                     })
