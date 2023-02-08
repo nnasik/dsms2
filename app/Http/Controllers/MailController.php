@@ -38,7 +38,7 @@ class MailController extends Controller
         $mail = Mail::find($id);
         
         // Checking for permissions
-        if(!(Auth::user()->hasPermissionTo('manage.mail') || Auth::user()->hasPermissionTo('summary.mail') || $mail->assigned_to == Auth::user()->id)){
+        if(!(Auth::user()->hasPermissionTo('manage.mail') || Auth::user()->hasPermissionTo('summary.mail') || $mail->assigned_to == Auth::user()->id || $mail->subject_officer == Auth::user()->id)){
             Session::flash('danger',"Access Restricted");
             return Redirect::back();
         }
