@@ -71,7 +71,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php /*
+                                    
                                     @foreach($mails as $mail)
 
                                     @if($mail->expected_date_of_reply < date("Y-m-d") && $mail->status != 'Replied')
@@ -109,8 +109,6 @@
                                         </tr>
 
                                         @endforeach
-                                        */
-                                        ?>
                                 </tbody>
                             </table>
                         </div>
@@ -129,11 +127,10 @@
 
 <script>
     $(document).ready(function() {
+        /*
         var data = [];
         @foreach($mails as $mail)
-            var assignedOfficerDP = $('<img />', { 
-                    id: 'assigned-{{$mail->id}}',
-                });
+
              @if(isset($mail->assignedTo))
                 @if(file_exists('storage/user/dp/'.$mail->assignedTo->profile_pic))
                 assignedOfficerDP.attr('src', "{{asset('storage/user/dp/'.$mail->assignedTo->profile_pic)}}");
@@ -145,22 +142,27 @@
                 assignedOfficerDP.attr('width', "50");
                 @endif
             @endif
-
+        
             data.push(["{{$mail->inward_register_reference}}",
             "{{$mail->from_whom}}",
             "{{$mail->subject}}",
             "{{$mail->status}}",
-            assignedOfficerDP
-        ]);
+            "x"
+            //assignedOfficerDP
+            ]);
 
         @endforeach
+        */
         $.noConflict();
         $('#mail-table').DataTable({
+            /*
             data:           data,
             deferRender:    true,
             scrollY:        200,
             scrollCollapse: true
+            */
         });
+
 
     } );
 </script>
