@@ -36,22 +36,6 @@
                 @endcan
             </div>
 
-            <div class="row">
-                <div class="col-12 mb-3">
-                    <form action="simple-results.html">
-                        <div class="input-group">
-                            <input type="search" class="form-control form-control-lg" id="search"
-                                placeholder="Search Mail">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-lg btn-default">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
 
             <div class="row mt-2">
                 <!-- left column -->
