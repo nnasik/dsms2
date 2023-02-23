@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/mail/mails-temporary-replied', [MailController::class,'temporaryRepliedMails'])->name('Temporary Replied Mail');
     Route::get('/mail/new', [MailController::class,'new'])-> name('New Mail');
     Route::get('/mail/view/{id}', [MailController::class,'view'])-> name('New Mail');
+    Route::get('/ajax/mail-search', [MailController::class,'mailSearch']);
 
     // Mail Requests
     Route::post('/mail/add', [MailController::class,'add']);

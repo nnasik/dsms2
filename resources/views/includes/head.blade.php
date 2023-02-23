@@ -11,7 +11,6 @@
 <link rel="shortcut icon" sizes="196x196" href="{{asset('dist/img/logo.png')}}">
 <link rel="apple-touch-icon-precomposed" href="{{asset('dist/img/logo.png')}}">
 
-
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
@@ -25,8 +24,11 @@
 <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
 
 <!-- Tempusdominus Bootstrap 4 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
 
 <!-- Custom CSS-->
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

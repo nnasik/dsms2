@@ -394,4 +394,13 @@ class MailController extends Controller
         $data['heading'] = "Non Assigned Mails";
         return view('features.mail.list')->with($data);
     }
+
+    public function mailSearch(Request $request){
+        $mails = [];
+        if($request->has('key')){
+            $keyword = $request->key;
+            $mails = Mail::select("id","from_whom","subject","status","assigned_to")->where('from_whom', 'LIKE', "%$keyword%")->orWhere('subject', 'LIKE', "%$keyword%")->get();
+        }
+        return response()->json($mails);
+    }
 }

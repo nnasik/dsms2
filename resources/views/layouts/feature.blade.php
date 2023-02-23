@@ -37,7 +37,6 @@
 </div>
 <!-- ./wrapper -->
 @include('includes/toast')
-
 @include('includes/script')
 </body>
 </html>
