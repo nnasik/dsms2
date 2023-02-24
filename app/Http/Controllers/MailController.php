@@ -349,7 +349,7 @@ class MailController extends Controller
 
     public function allMails(){
         $data['heading'] = 'All Mails';
-        $data['mails'] = Mail::all()->reverse();
+        $data['mails'] = Mail::orderBy('date_of_receipt', 'desc')->get();
         return view('features.mail.list')->with($data);
     }
 
@@ -393,14 +393,5 @@ class MailController extends Controller
         $data['mails'] = Mail::where('assigned_to',NULL)->get();
         $data['heading'] = "Non Assigned Mails";
         return view('features.mail.list')->with($data);
-    }
-
-    public function mailSearch(Request $request){
-        $mails = [];
-        if($request->has('key')){
-            $keyword = $request->key;
-            $mails = Mail::select("id","from_whom","subject","status","assigned_to")->where('from_whom', 'LIKE', "%$keyword%")->orWhere('subject', 'LIKE', "%$keyword%")->get();
-        }
-        return response()->json($mails);
     }
 }

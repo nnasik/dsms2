@@ -39,15 +39,15 @@
 
             <div class="row mt-2">
                 <!-- left column -->
-
+                <div id="buttons-datatable">hello world</div>
                 <div class="col-md-12">
-
+                    
                     <div class="card card-primary">
                         <div class="card-body">
                             <table class="table table-hover" id="mail-table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">Recipt</th>
                                         <th scope="col">From</th>
                                         <th scope="col">Subject</th>
                                         <th scope="col">Status</th>
@@ -72,7 +72,7 @@
                                         <tr class="" role="button"
                                             onclick="window.location='/mail/view/{{$mail->id}}/'">
                                             @endif
-                                            <td>{{$mail->inward_register_reference}}</td>
+                                            <td>{{$mail->date_of_receipt}}</td>
                                             <td>{{$mail->from_whom}}</td>
                                             <td>{{$mail->subject}}</td>
                                             <td>{{$mail->status}}</td>
@@ -111,43 +111,11 @@
 
 <script>
     $(document).ready(function() {
-        /*
-        var data = [];
-        @foreach($mails as $mail)
-
-             @if(isset($mail->assignedTo))
-                @if(file_exists('storage/user/dp/'.$mail->assignedTo->profile_pic))
-                assignedOfficerDP.attr('src', "{{asset('storage/user/dp/'.$mail->assignedTo->profile_pic)}}");
-                assignedOfficerDP.attr('class', "img-circle");
-                assignedOfficerDP.attr('width', "50");
-                @else
-                assignedOfficerDP.attr('src', "{{asset('storage/user/dp.png')}}");
-                assignedOfficerDP.attr('class', "img-circle");
-                assignedOfficerDP.attr('width', "50");
-                @endif
-            @endif
-        
-            data.push(["{{$mail->inward_register_reference}}",
-            "{{$mail->from_whom}}",
-            "{{$mail->subject}}",
-            "{{$mail->status}}",
-            "x"
-            //assignedOfficerDP
-            ]);
-
-        @endforeach
-        */
         $.noConflict();
-        $('#mail-table').DataTable({
-            /*
-            data:           data,
-            deferRender:    true,
-            scrollY:        200,
-            scrollCollapse: true
-            */
-        });
-
-
-    } );
+        var dtable = $('#mail-table').DataTable({
+            dom: 'Bfrtip',
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#buttons-datatable');
+    });
 </script>
 @endsection
