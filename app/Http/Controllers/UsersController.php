@@ -22,7 +22,7 @@ class UsersController extends Controller
             return Redirect::back();
         }
 
-        $users = User::all();
+        $users = User::orderBy('created_at','desc')->get();
         $data['users'] = $users;
         return view('features.users.users')->with($data);
     }
