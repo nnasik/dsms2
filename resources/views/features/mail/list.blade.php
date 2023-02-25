@@ -59,14 +59,14 @@
                                     @foreach($mails as $mail)
 
                                     @if($mail->expected_date_of_reply < date("Y-m-d") && $mail->status != 'Replied')
-                                        <tr class="alert-danger clickable-row" role="button"
+                                        <tr class="bg-danger clickable-row" role="button"
                                             onclick="window.location='/mail/view/{{$mail->id}}/'">
                                             @elseif($mail->expected_date_of_reply == date("Y-m-d") && $mail->status !=
                                             'Replied')
-                                        <tr class="alert-warning clickable-row" role="button"
+                                        <tr class="bg-warning clickable-row" role="button"
                                             onclick="window.location='/mail/view/{{$mail->id}}/'">
                                             @elseif($mail->status == 'Replied')
-                                        <tr class="alert-success clickable-row" role="button"
+                                        <tr class="bg-success clickable-row" role="button"
                                             onclick="window.location='/mail/view/{{$mail->id}}/'">
                                             @else
                                         <tr class="" role="button"
