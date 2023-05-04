@@ -39,7 +39,6 @@
 
             <div class="row mt-2">
                 <!-- left column -->
-                <div id="buttons-datatable">hello world</div>
                 <div class="col-md-12">
                     
                     <div class="card card-primary">

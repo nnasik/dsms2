@@ -29,6 +29,9 @@
 <!-- Custom CSS-->
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
+<!-- Daterange picker -->
+<link rel="stylesheet" href="{{asset('plugins/fullcalendar/main.min.css')}}">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
