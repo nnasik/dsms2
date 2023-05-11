@@ -86,10 +86,10 @@
         </li>
 
         <li class="nav-item">
-          <a href="/stationary" class="nav-link {{ request()->is('reservation') ? 'active' : '' }}">
+          <a href="/requests" class="nav-link {{ request()->is('requests') ? 'active' : '' }}">
             <i class="nav-icon fas fa-file-pen"></i>
             <p>
-              Stationary
+              Requests
             </p>
           </a>
         </li>
@@ -97,10 +97,10 @@
         
 
         <li class="nav-item">
-          <a href="/stationary" class="nav-link {{ request()->is('reservation') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-bug"></i>
+          <a href="/tikets" class="nav-link {{ request()->is('reservation') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-ticket"></i>
             <p>
-              Issues Tracking
+              Tickets
             </p>
           </a>
         </li>

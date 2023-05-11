@@ -8,10 +8,11 @@ use Redirect;
 use Session;
 use App\Models\Post;
 use App\Models\PostMedia;
+use App\Models\PostComment;
 class BlogController extends Controller
 {
     public function posts(){
-        $data['posts'] = Post::where('status','Published')->get()->reverse();
+        $data['posts'] = Post::where('status','Published')->with('likes')->with('comments')->get()->reverse();
         $data['user'] = Auth::user();
         return view('features.blog.posts')->with($data);
     }
@@ -72,5 +73,45 @@ class BlogController extends Controller
         $post->status = 'Published';
         $post->save();
         return redirect('/blog');
+    }
+
+    public function post_comment(Request $request){
+        
+        $request->validate([
+            'post_id' => 'required',
+            'comment' => 'required',
+        ]);
+        
+        $current_user = Auth::user();
+        $post = Post::find($request->post_id);
+        
+        $post_comment = New PostComment();
+        
+        $post_comment->author = $current_user->id;
+        $post_comment->post_id = $request->post_id;
+        $post_comment->comment = $request->comment;
+        
+        $post_comment->save();
+
+
+        return $this->posted_comments($post->id);
+        
+    }
+
+    private function posted_comments($post_id){
+        $post = Post::find($post_id);
+        $comments=null;
+        $posted_comments = $post->comments;
+        foreach ($posted_comments as $comment) {
+            $comments[] = [
+                'comment' =>$comment->comment,
+                'updated_at' =>$comment->updated_at,
+                'author' =>[
+                    'name' =>$comment->author->name,
+                    'profile_pic' =>$comment->author->profile_pic
+                ],
+            ];
+        }
+        return $comments;
     }
 }

@@ -17,4 +17,12 @@ class Post extends Model
         return $this->hasMany(PostMedia::class,'post_id','id');
     }
 
+    public function likes(){
+        return $this->hasMany(PostLike::class,'post_id','id');
+    }
+
+    public function comments(){
+        return $this->hasMany(PostComment::class, 'post_id', 'id');
+    }
+
 }
