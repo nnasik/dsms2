@@ -27,6 +27,9 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'manage.mail']);
         Permission::create(['name' => 'summary.mail']);
 
+        
+
+
         $su = User::find('922392048V');
 
         $su->givePermissionTo('manage.users');

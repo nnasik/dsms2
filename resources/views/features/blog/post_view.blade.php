@@ -37,32 +37,34 @@
                 @if($post->likes->count()>0 && $post->comments->count()>0)
                  likes - 
                 @endif
-
+                
                 @if($post->comments->count()>0)
-                {{$post->comments->count()}} comments
+                {{--$post->comments->count()--}} {{--comments--}}
                 @endif
+                
                 </span>
             </div>
             <!-- /.card-body -->
             <!-- /.card-footer -->
+            <!--
             <div class="card-footer">
                 @if($user->profile_pic && file_exists('storage/user/dp/'.$user->profile_pic))
                 <img src="{{asset('storage/user/dp/'.$user->profile_pic)}}" class="img-circle img-sm " alt="User Image">
                 @else
                 <img src="{{asset('storage/user/dp.png')}}" class="img-circle img-sm" alt="User Image">
                 @endif
-                <!-- .img-push is used to add margin to elements next to floating images -->
                 <div class="img-push">
                     <input type="text" id="comment{{$post->id}}" class="form-control form-control-sm"
                     onkeydown="post_comment(this,{{$post->id}})" placeholder="Press enter to post comment">
                 </div>
             </div>
+            -->
             <!-- /.card-footer -->
-            
+            <!--
             <div class="card-footer card-comments" id="post-{{$post->id}}-comments">
                 @foreach($post->comments->reverse() as $comment)
                 <div class="card-comment">
-                    <!-- User image -->
+                   
                     @if($comment->posted_by->profile_pic && file_exists('storage/user/dp/'.$comment->posted_by->profile_pic))
                     <img src="{{asset('storage/user/dp/'.$comment->posted_by->profile_pic)}}" class="img-circle img-sm " alt="User Image">
                     @else
@@ -73,13 +75,13 @@
                         <span class="username">
                             {{$comment->posted_by->name}}
                             <span class="text-muted float-right">{{$comment->updated_at}}</span>
-                        </span><!-- /.username -->
+                        </span>
                         {{$comment->comment}}
                     </div>
-                    <!-- /.comment-text -->
+                    
                 </div>
                 @endforeach
-            
+            -->
         </div>
         <!-- /.card -->
     </div>

@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="content-wrapper">
+@can('view.post')
   <div class="row p-3">
     <div class="col-md-4"></div>
     <div class="col-md-4">
@@ -15,6 +16,7 @@
   @foreach($posts as $post)
     @include('features.blog.post_view')
   @endforeach
+  @endcan
 </div>
 <script>
   function post_comment(element,id){
@@ -30,8 +32,6 @@
         },
       function(data, status){
         console.log(data,status);
-        //post-{{$post->id}}-comments
-        //alert("Data: " + data + "\nStatus: " + status);
       });
 
     }
