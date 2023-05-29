@@ -47,17 +47,16 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <div class="">
                                     @foreach($post_medias as $media)
-                                        <img src="{{$media->file}}" height="70" />
+                                        <img src="/storage/blog/{{$media->file}}" height="70" />
                                     @endforeach
-                                    <div class="col-md-12 mb-3">
-                                        <img src="/img/mail/add_file.png" role="button" height="70" />
-                                    </div>
+                                        <img src="/img/mail/add_file.png" role="button" height="70" onclick="openFileMenu()"/>
+
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-12 mb-3">
+                                    <div class="col-md-12 my-3">
                                         <div class="input-group">
                                             <textarea name="content" id="content" class="form-control" rows="8" placeholder="Write here..."></textarea>
                                         </div>
@@ -98,8 +97,20 @@
                         <form action="/blog/uploadmedia" method="post" id="media-form" enctype="multipart/form-data" style="display:none">
                             @csrf
                             <input type="hidden" name="post_id" value="{{$post->id}}">
-                            <input type="file" name="post_media" id="post_media" >
+                            <input type="file" name="media" id="post_media"  onchange="submitMedia()">
                         </form>
+                        <script>
+                            function submitMedia(){
+                                let form = document.getElementById("media-form");
+                                form.submit();
+                            }
+                            
+                            function openFileMenu(){
+                                let input = document.getElementById("post_media");
+                                input.click();
+                            }
+                            
+                        </script>
                     </div>
                 </div>
             </div>

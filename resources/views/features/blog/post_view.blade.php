@@ -22,7 +22,13 @@
                 <p class="text-muted"><i class="fa fa-location-dot text-danger"></i> {{$post->location}}</p>
                 @endif
                 <h5 style="font-weight:bold">{{$post->title}}</h5>
-                <p class="text-justify" style="line-height: 1.8">{{$post->content}}</p>
+                <div class="mt-2">
+                    @foreach($post->medias as $media)
+                        <img class="m-1" src="/storage/blog/{{$media->file}}" height="200" />
+                    @endforeach
+                </div>
+
+                <p class="text-justify mt-2" style="line-height: 1.8">{{$post->content}}</p>
                 <p>
                 @if(isset($post->hashtags))
                     <span class="text-muted"><i class="fa fa-hashtag"></i> {{$post->hashtags}}</span>

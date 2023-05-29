@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
 
-class PermissionSeeder extends Seeder
+class PermissionSeeder2 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +16,7 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-       
         // Blog Permission
-        Permission::create(['name' => 'view.post']);
-
+        Permission::create(['name' => 'view.blog']);
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content-wrapper">
-@can('view.post')
+@can('view.blog')
   <div class="row p-3">
     <div class="col-md-4"></div>
     <div class="col-md-4">

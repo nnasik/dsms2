@@ -9,10 +9,11 @@ use Session;
 use App\Models\Post;
 use App\Models\PostMedia;
 use App\Models\PostComment;
+use Validator;
 class BlogController extends Controller
 {
     public function posts(){
-        $data['posts'] = Post::where('status','Published')->with('likes')->with('comments')->get()->reverse();
+        $data['posts'] = Post::where('status','Published')->with('likes')->with('comments')->with('medias')->get()->reverse();
         $data['user'] = Auth::user();
         return view('features.blog.posts')->with($data);
     }
@@ -35,10 +36,13 @@ class BlogController extends Controller
     }
 
     public function upload_media(Request $request){
+
         $validator = Validator::make($request->all(),[
             'post_id'=>'required',
             'media'=>'required|mimes:jpg,jpeg,png,gif|max:10240'
         ]);
+
+        $user_id = Auth::user()->id;
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
@@ -53,6 +57,7 @@ class BlogController extends Controller
             
             $post_media = New PostMedia;
             $post_media->post_id = $post->id;
+            $post_media->author = $user_id;
             $post_media->type = $request->media->extension();
             $post_media->file = $media;
             $post_media->save();
