@@ -17,7 +17,7 @@
                 <!-- /.card-tools -->
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
+            <div class="card-body" style="overflow:hidden">
                 @if(isset($post->location))
                 <p class="text-muted"><i class="fa fa-location-dot text-danger"></i> {{$post->location}}</p>
                 @endif
