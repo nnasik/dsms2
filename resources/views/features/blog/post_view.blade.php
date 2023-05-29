@@ -24,7 +24,7 @@
                 <h5 style="font-weight:bold">{{$post->title}}</h5>
                 <div class="mt-2">
                     @foreach($post->medias as $media)
-                        <img class="m-1" src="/storage/blog/{{$media->file}}" height="200" />
+                        <img class="m-1" src="/storage/blog/{{$media->file}}" height="200" style="max-width:100%;"/>
                     @endforeach
                 </div>
 
