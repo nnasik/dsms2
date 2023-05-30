@@ -43,7 +43,7 @@
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-        @can('dashboard')
+        @can('view.dashboard')
         <li class="nav-item">
           <a href="/" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -54,6 +54,7 @@
         </li>
         @endcan
 
+        @can('view.blog')
         <li class="nav-item">
           <a href="/blog" class="nav-link {{ request()->is('blog') ? 'active' : '' }}">
             <i class="nav-icon fas fa-blog"></i>
@@ -62,6 +63,7 @@
             </p>
           </a>
         </li>
+        @endcan
 
         @can('view.mail')
         <li class="nav-item">
@@ -75,7 +77,7 @@
         @endcan
 
         
-
+        @can('make.reservation')
         <li class="nav-item">
           <a href="/reservations" class="nav-link {{ request()->is('reservation') ? 'active' : '' }}">
             <i class="nav-icon fas fa-building"></i>
@@ -84,7 +86,9 @@
             </p>
           </a>
         </li>
+        @endcan
 
+        @can('open.request')
         <li class="nav-item">
           <a href="/requests" class="nav-link {{ request()->is('requests') ? 'active' : '' }}">
             <i class="nav-icon fas fa-file-pen"></i>
@@ -93,9 +97,9 @@
             </p>
           </a>
         </li>
-
+        @endcan
         
-
+        @can('open.tickets')
         <li class="nav-item">
           <a href="/tikets" class="nav-link {{ request()->is('reservation') ? 'active' : '' }}">
             <i class="nav-icon fas fa-ticket"></i>
@@ -104,6 +108,7 @@
             </p>
           </a>
         </li>
+        @endcan
 
         @can('manage.users')
         <li class="nav-item">
