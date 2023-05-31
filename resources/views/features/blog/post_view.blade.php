@@ -123,6 +123,24 @@
             if (status=='success') {
                 $("#post-like-"+data).html("<i class='fa fa-thumbs-up'></i> Liked");
                 $("#post-like-"+data).addClass("text-primary");
+                $("#post-like-"+data).attr("onclick","unLikePost("+data+")");
+
+            }
+        });
+    }
+
+    function unLikePost(post_id){
+        $.post(
+        "/blog/unlikepost",
+        {
+          post_id:post_id,
+          _token: "{{csrf_token()}}"
+        },
+        function(data, status){
+            if(status=='success') {
+                $("#post-like-"+data).html("<i class='far fa-thumbs-up'></i> Like");
+                $("#post-like-"+data).removeClass("text-primary");
+                $("#post-like-"+data).attr("onclick","likePost("+data+")");
             }
         });
     }

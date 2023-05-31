@@ -83,4 +83,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/blog/uploadmedia', [BlogController::class,'upload_media']);
     Route::post('/blog/postcomment', [BlogController::class,'post_comment']);
     Route::post('/blog/likepost', [BlogController::class,'like_post']);
+    Route::post('/blog/unlikepost', [BlogController::class,'unlike_post']);
 });

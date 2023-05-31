@@ -137,4 +137,17 @@ class BlogController extends Controller
 
         return $post->id;
     }
+
+    public function unlike_post(Request $request){
+        $user_id = Auth::user()->id;
+
+        $request->validate([
+            'post_id'=>'required'
+        ]);
+
+        $post = Post::find($request->post_id);
+        $post_like =PostLike::where('liked_by',$user_id)->where('post_id',$post->id)->delete();
+
+        return $post->id;
+    }
 }
