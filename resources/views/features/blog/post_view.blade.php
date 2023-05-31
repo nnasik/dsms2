@@ -34,14 +34,32 @@
                     <span class="text-muted"><i class="fa fa-hashtag"></i> {{$post->hashtags}}</span>
                 @endif
                 </p>
-                <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
+                @php
+                $like_found = false;
+                foreach($post->likes as $like){
+                    if($like->liked_by == Auth::user()->id){
+                        $like_found=true;
+                        break;
+                    }
+                }
+                @endphp
+                @if($like_found)
+                <button type="button" id="post-like-{{$post->id}}" class="text-primary btn btn-default btn-sm" onClick="unLikePost({{$post->id}})"><i class="fa fa-thumbs-up"></i> Liked</button>
+                @else
+                <button type="button" id="post-like-{{$post->id}}" class="btn btn-default btn-sm" onClick="likePost({{$post->id}})"><i class="far fa-thumbs-up"></i> Like</button>
+                @endif
+                
                 <span class="float-right text-muted">
                 @if($post->likes->count()>0)
                 {{$post->likes->count()}}
                 @endif
 
+                @if($post->likes->count()>0)
+                likes
+                @endif
+
                 @if($post->likes->count()>0 && $post->comments->count()>0)
-                 likes - 
+                - 
                 @endif
                 
                 @if($post->comments->count()>0)
@@ -91,4 +109,21 @@
         </div>
         <!-- /.card -->
     </div>
+
 </div>
+<script>
+    function likePost(post_id){
+        $.post(
+        "/blog/likepost",
+        {
+          post_id:post_id,
+          _token: "{{csrf_token()}}"
+        },
+        function(data, status){
+            if (status=='success') {
+                $("#post-like-"+data).html("<i class='fa fa-thumbs-up'></i> Liked");
+                $("#post-like-"+data).addClass("text-primary");
+            }
+        });
+    }
+</script>

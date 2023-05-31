@@ -19,6 +19,10 @@ return new class extends Migration
             $table->unsignedBigInteger('post_id');
             $table->timestamps();
         });
+
+        Schema::table('post_likes', function (Blueprint $table){
+            $table->unique(array('liked_by','post_id'));
+        });
     }
 
     /**

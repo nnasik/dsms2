@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PostLike extends Model
 {
     use HasFactory;
+
+    public function author(){
+        return $this->belongsTo(User::class, 'liked_by');
+    }
 }

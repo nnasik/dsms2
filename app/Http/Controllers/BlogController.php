@@ -9,6 +9,7 @@ use Session;
 use App\Models\Post;
 use App\Models\PostMedia;
 use App\Models\PostComment;
+use App\Models\PostLike;
 use Validator;
 class BlogController extends Controller
 {
@@ -118,5 +119,22 @@ class BlogController extends Controller
             ];
         }
         return $comments;
+    }
+
+    public function like_post(Request $request){
+        $user_id = Auth::user()->id;
+
+        $request->validate([
+            'post_id'=>'required'
+        ]);
+
+        $post = Post::find($request->post_id);
+
+        $post_like = new PostLike();
+        $post_like->post_id = $post->id;
+        $post_like->liked_by = $user_id;
+        $post_like->save();
+
+        return $post->id;
     }
 }

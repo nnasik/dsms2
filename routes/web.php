@@ -75,11 +75,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/reservations', [ReservationController::class,'reservations'])->name('Reservations');
     Route::get('/reservation/new', [ReservationController::class,'new'])->name('News');
 
-    // WBB
+    // Blog
     Route::get('/blog', [BlogController::class,'posts'])->name('DSKPW Blog');
     Route::get('/blog/post/{id}', [BlogController::class,'post'])->name('Post');
     Route::post('/blog/create', [BlogController::class,'create_post']);
     Route::post('/blog/publishpost', [BlogController::class,'publish_post']);
     Route::post('/blog/uploadmedia', [BlogController::class,'upload_media']);
     Route::post('/blog/postcomment', [BlogController::class,'post_comment']);
+    Route::post('/blog/likepost', [BlogController::class,'like_post']);
 });
