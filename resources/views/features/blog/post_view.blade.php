@@ -17,18 +17,22 @@
                 <!-- /.card-tools -->
             </div>
             <!-- /.card-header -->
-            <div class="card-body" style="overflow:hidden">
+            <div class="card-body p-4" style="overflow:hidden">
                 @if(isset($post->location))
                 <p class="text-muted"><i class="fa fa-location-dot text-danger"></i> {{$post->location}}</p>
                 @endif
                 <h5 style="font-weight:bold">{{$post->title}}</h5>
-                <div class="mt-2">
+                <div class="mt-2 row">
                     @foreach($post->medias as $media)
-                        <img class="m-1" src="/storage/blog/{{$media->file}}" height="200" style="max-width:100%;"/>
+                        <img class="col-md-6 col-lg-4 my-1" src="/storage/blog/{{$media->file}}"/>
                     @endforeach
                 </div>
 
-                <p class="text-justify mt-2" style="line-height: 1.8">{{$post->content}}</p>
+                <p class="text-justify mt-2" style="line-height: 1.8">
+                @php 
+                    echo nl2br(e($post->content),false)
+                @endphp
+                </p>
                 <p>
                 @if(isset($post->hashtags))
                     <span class="text-muted"><i class="fa fa-hashtag"></i> {{$post->hashtags}}</span>

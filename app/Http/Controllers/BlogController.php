@@ -26,6 +26,13 @@ class BlogController extends Controller
         return view('features.blog.post')->with($data);
     }
 
+    public function event($id){
+        $post = Post::find($id);
+        $data['post'] = $post;
+        $data['post_medias'] = $post->medias;
+        return view('features.blog.event')->with($data);
+    }
+
     public function create_post(Request $request){
         $logged_in_user = Auth::user();
 
@@ -34,6 +41,16 @@ class BlogController extends Controller
         $post->status = 'Created';
         $post->save();
         return redirect('/blog/post/'.$post->id);
+    }
+
+    public function create_event(Request $request){
+        $logged_in_user = Auth::user();
+
+        $post = New Post();
+        $post->author = $logged_in_user->id;
+        $post->status = 'Created';
+        $post->save();
+        return redirect('/blog/event/'.$post->id);
     }
 
     public function upload_media(Request $request){
@@ -76,6 +93,36 @@ class BlogController extends Controller
         $post->content = $request->content;
         $post->location = $request->location;
         $post->hashtags = $request->hashtags;
+        $post->status = 'Published';
+        $post->save();
+        return redirect('/blog');
+    }
+
+    public function publish_event(Request $request){
+        $logged_in_user = Auth::user();
+        //$post = Post::where('id',$request->post_id)->where('author',$request->$logged_in_user->id)->get();
+        $post = Post::find($request->post_id);
+        $post->title = $request->title;
+
+        $post->content ="";
+
+        if(isset($request->department)) {
+            $post->content = $post->content."Department / Ministry : ". $request->department."\n";
+        }
+        if(isset($request->coordination)) {
+            $post->content = $post->content."Coordination with ". $request->coordination."\n";
+        }
+        if(isset($request->date)) {
+            $post->content = $post->content."Date : ". $request->date."\n";
+        }
+        if(isset($request->time)) {
+            $post->content = $post->content."Time : ". $request->time."\n";
+        }
+        if(isset($request->outcome)) {
+            $post->content = $post->content."Expected outcome : ". $request->outcome."\n\n";
+        }
+        $post->content = $post->content.$request->content;
+        $post->location = $request->location;
         $post->status = 'Published';
         $post->save();
         return redirect('/blog');
