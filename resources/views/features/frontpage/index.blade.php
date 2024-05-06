@@ -28,15 +28,15 @@
             <div class="row">
                 <div class="card">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-lg-4 col-md-2">
                             <div class="card m-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="{{asset('img/frontpage/subject-file.png')}}" class="img-fluid rounded-start" alt="...">
+                                        <img src="{{asset('img/frontpage/subject-file.png')}}" class="img-fluid rounded-start p-2" alt="...">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5>Subject File</h5>
+                                            <h5 class="mt-0">Subject File</h5>
                                             <p class="card-text">Subject Files used in all branches, units, divisions
                                             </p>
                                             <a href="" class="btn btn-outline-success" data-toggle="modal"
@@ -46,8 +46,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col"></div>
-                        <div class="col"></div>
+                        <div class="col-lg-4 col-md-2"></div>
+                        <div class="col-lg-4 col-md-2"></div>
                     </div>
 
                 </div>
@@ -55,13 +55,14 @@
             <h2 class="">My Front Pages</h2>
             <div class="row">
                 <div class="card p-3">
-                    <div class="row">
+                    <div class="card-header"><h3>Subject Files</h3></div>
+                    <div class="row mt-2">
                         @foreach($frontpages as $frontpage)
-                        <div class="col-3">
+                        <div class="col-lg-3 col-md-2">
                             <div class="card">
                                 <div class="card-body">
                                     <h5>{{$frontpage->heading}}</h5>
-                                    <h6 class="card-title">{{$frontpage->heading}}</h6>
+                                    <h6 class="card-title">{{$frontpage->sub_heading}}</h6>
                                     <p class="card-text">
                                         {{$frontpage->file_no}}
                                         <br>
