@@ -9,8 +9,7 @@
     <title>Front Page - {{$frontpage->id}}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
@@ -78,11 +77,11 @@
         <div class="m-0 p-0">
             <div class="m-2" style="text-align: left;">
                 <p style="font-size: 13pt;">
-                    <i class="fa-solid fa-phone"></i> : 065 2257 716
+                    <i class="fa fa-solid fa-phone"></i> : 065 2257 716
                     <br>
-                    <i class="fa-solid fa-envelope"></i> : moha.divi.koralaipattuwest@gmail.com
+                    <i class="fa fa-solid fa-envelope"></i> : moha.divi.koralaipattuwest@gmail.com
                     <br>
-                    <i class="fa-solid fa-globe"></i> : koralaipattuwest.ds.gov.lk
+                    <i class="fa fa-solid fa-globe"></i> : koralaipattuwest.ds.gov.lk
 
                 </p>
             </div>
