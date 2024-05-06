@@ -75,7 +75,6 @@
           </a>
         </li>
         @endcan
-
         
         @can('make.reservation')
         <li class="nav-item">
@@ -109,6 +108,25 @@
           </a>
         </li>
         @endcan
+
+        
+        <li class="nav-item">
+          <a href="/tikets" class="nav-link {{ request()->is('records') ? 'active' : '' }}">
+            <i class="nav-icon fa fa-book"></i>
+            <p>
+              Records
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{route('frontpage.index')}}" class="nav-link {{ request()->is('frontpage') ? 'active' : '' }}">
+            <i class="nav-icon fa fa-file-pdf"></i>
+            <p>
+              Front Page
+            </p>
+          </a>
+        </li>
 
         @can('manage.users')
         <li class="nav-item">

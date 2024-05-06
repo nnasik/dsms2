@@ -6,6 +6,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\FrontPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,4 +89,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/blog/postcomment', [BlogController::class,'post_comment']);
     Route::post('/blog/likepost', [BlogController::class,'like_post']);
     Route::post('/blog/unlikepost', [BlogController::class,'unlike_post']);
+
+    // Template
+    Route::get('/template', [TemplateController::class,'index'])->name('letter.templates');
+
+    Route::get('/frontpage', [FrontPageController::class,'index'])->name('frontpage.index');
+    Route::get('/frontpage/pdf/{id}', [FrontPageController::class,'generatePDF'])->name('frontpage.pdf');
+    Route::post('/frontpage/store/subjectfile/', [FrontPageController::class,'storeSubjectFile'])->name('frontpage.store.subjectfile');
+    
+    
 });
