@@ -9,8 +9,6 @@
     <title>Front Page - {{$frontpage->id}}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             border: solid 3px #000;
@@ -77,11 +75,16 @@
         <div class="m-0 p-0">
             <div class="m-2" style="text-align: left;">
                 <p style="font-size: 13pt;">
-                    <i class="fa fa-solid fa-phone"></i> : 065 2257 716
+                    <img height="20"
+                        src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_local_phone_48px-64.png"
+                        alt="Phone"> : 065 2257 716
                     <br>
-                    <i class="fa fa-solid fa-envelope"></i> : moha.divi.koralaipattuwest@gmail.com
+                    <img height="20" src="https://cdn0.iconfinder.com/data/icons/picons-social/57/67-gmail-64.png"
+                        alt="Email"> : moha.divi.koralaipattuwest@gmail.com
                     <br>
-                    <i class="fa fa-solid fa-globe"></i> : koralaipattuwest.ds.gov.lk
+                    <img height="20" src="https://cdn1.iconfinder.com/data/icons/material-core/20/language-64.png"
+                        alt="Web">
+                    : koralaipattuwest.ds.gov.lk
 
                 </p>
             </div>

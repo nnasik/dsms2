@@ -54,7 +54,7 @@ class FrontPageController extends Controller{
 
         $options = new Options();
         $options->set('isHtml5ParserEnabled', true);
-        //$options->set('isPhpEnabled', true);
+        $options->set('isPhpEnabled', true);
         $options->set('isRemoteEnabled', true);
         //$options->set('defaultFont', 'Helvetica');
         $pdf->setOptions($options);
