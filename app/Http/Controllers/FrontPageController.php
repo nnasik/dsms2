@@ -13,6 +13,7 @@ use Auth;
 
 class FrontPageController extends Controller{
 
+
     public function index(){
         $user_id = Auth::user()->id;
         $data['frontpages'] = FrontPage::where('user_id',$user_id)->get()->reverse();
@@ -43,13 +44,62 @@ class FrontPageController extends Controller{
         return redirect()->back();
     }
 
+    public function storePersonalFile(Request $request){
+        $request->validate([
+            'type'=>'required',
+            'name_of_the_officer'=>'required',
+            'designation'=>'required',
+            'dob'=>'required',
+            'nic'=>'required',
+            'date_of_appointment'=>'required',
+            'wnop_no'=>'required',
+            'date_of_increment'=>'required',
+            'date_of_retirement'=>'required',
+            'private_address'=>'required',
+        ]);
+
+        $front_page = New FrontPage;
+        $front_page->type = $request->type;
+        $front_page->file_no = $request->file_no;
+
+        $front_page->branch = "ADMINISTRATION BRANCH";
+        $front_page->heading = "Personal File";
+        
+        $front_page->name_of_the_officer = $request->name_of_the_officer;
+        $front_page->designation = $request->designation;
+        $front_page->dob = $request->dob;
+        $front_page->nic = $request->nic;
+        $front_page->date_of_appointment = $request->date_of_appointment;
+        $front_page->appoint_letter_no = $request->appoint_letter_no;
+        $front_page->wnop_no = $request->wnop_no;
+        $front_page->date_of_increment = $request->date_of_increment;
+        $front_page->date_of_retirement = $request->date_of_retirement;
+        $front_page->private_address = $request->private_address;
+        
+        $front_page->user_id = Auth::user()->id;
+
+        $front_page->save();
+
+        Session::flash('success','Personal saved');
+        
+        return redirect()->back();
+    }
+
     public function generatePDF($id){
-        $data['frontpage'] = FrontPage::findOrFail($id);
-        //return view('features.frontpage.templates.subjectfile')->with($data);
+        $frontpage = FrontPage::findOrFail($id);
+        $data['frontpage'] = $frontpage;
     
         $pdf = new Dompdf();
 
-        $html = view('features.frontpage.templates.subjectfile')->with($data)->render();
+        
+        if($frontpage->type=='personalfile') {
+            $html = view('features.frontpage.templates.personalfile')->with($data)->render();
+        }
+        elseif($frontpage->type=='subjectfile') {
+            $html = view('features.frontpage.templates.subjectfile')->with($data)->render();
+        }
+        
+        
         $pdf->loadHtml($html);
 
         $options = new Options();

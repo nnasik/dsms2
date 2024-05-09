@@ -32,7 +32,8 @@
                             <div class="card m-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="{{asset('img/frontpage/subject-file.png')}}" class="img-fluid rounded-start p-2" alt="...">
+                                        <img src="{{asset('img/frontpage/subject-file.png')}}"
+                                            class="img-fluid rounded-start p-2" alt="...">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
@@ -46,8 +47,44 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-2"></div>
-                        <div class="col-lg-4 col-md-2"></div>
+                        <div class="col-lg-4 col-md-2">
+                            <div class="card m-3">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="{{asset('img/frontpage/subject-file.png')}}"
+                                            class="img-fluid rounded-start p-2" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="mt-0">Registers</h5>
+                                            <p class="card-text">Registers used in all Branches. Eg. Mail Register,
+                                            </p>
+                                            <a href="" class="btn btn-outline-success" data-toggle="modal"
+                                                data-target="#create-subject-file-modal">Create</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-2">
+                            <div class="card m-3">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="{{asset('img/frontpage/subject-file.png')}}"
+                                            class="img-fluid rounded-start p-2" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="mt-0">Personal File</h5>
+                                            <p class="card-text">Personal Files used in Admin Branch for each employee.
+                                            </p>
+                                            <a href="" class="btn btn-outline-success" data-toggle="modal"
+                                                data-target="#create-personal-file-modal">Create</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -55,26 +92,57 @@
             <h2 class="">My Front Pages</h2>
             <div class="row">
                 <div class="card p-3">
-                    <div class="card-header"><h3>Subject Files</h3></div>
-                    <div class="row mt-2">
+                    <div class="card-header">
+                        <h3>Subject Files</h3>
+                    </div>
+                    <div class="row mt-3">
                         @foreach($frontpages as $frontpage)
+                        @if($frontpage->type=='subjectfile')
                         <div class="col-lg-3 col-md-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5>{{$frontpage->heading}}</h5>
+                                    <h5>{{$frontpage->file_no}}</h5>
                                     <h6 class="card-title">{{$frontpage->sub_heading}}</h6>
                                     <p class="card-text">
-                                        {{$frontpage->file_no}}
+                                        {{$frontpage->heading}}
                                         <br>
                                         {{$frontpage->year}}
 
                                     </p>
-                                    <a href="{{route('frontpage.pdf',$frontpage->id)}}" target="_blank" class="btn btn-primary"><i
-                                            class="fa fa-download" aria-hidden="true"></i>
-                                        PDF</a>
+                                    <a href="{{route('frontpage.pdf',$frontpage->id)}}" target="_blank"
+                                        class="btn btn-primary m-1"><i class="fa fa-download" aria-hidden="true"></i>
+                                        Front Page A4</a>
+
                                 </div>
                             </div>
                         </div>
+                        @endif
+                        @endforeach
+
+                    </div>
+
+                    <div class="card-header">
+                        <h3>Personal Files</h3>
+                    </div>
+                    <div class="row mt-3">
+                        @foreach($frontpages as $frontpage)
+                        @if($frontpage->type=='personalfile')
+                        <div class="col-lg-3 col-md-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>{{$frontpage->file_no}}</h5>
+                                    <h6 class="card-title">{{$frontpage->sub_heading}}</h6>
+                                    <p class="card-text">
+                                        {{$frontpage->name_of_the_officer}}
+                                    </p>
+                                    <a href="{{route('frontpage.pdf',$frontpage->id)}}" target="_blank"
+                                        class="btn btn-primary m-1"><i class="fa fa-download" aria-hidden="true"></i>
+                                        Front Page A4</a>
+
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                         @endforeach
 
                     </div>
@@ -91,4 +159,5 @@
 </div>
 
 @include('features.frontpage.modals.create_subject_file')
+@include('features.frontpage.modals.create_personal_file')
 @endsection

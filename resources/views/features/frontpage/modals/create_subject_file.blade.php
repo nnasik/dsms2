@@ -13,7 +13,7 @@
             <div class="modal-body">
                 
                     @csrf
-                    <input type="hidden" name="type" value="frontpage">
+                    <input type="hidden" name="type" value="subjectfile">
                 <div class="row mt-3">
                     <div class="col">
                         <div class="input-group mr-3">

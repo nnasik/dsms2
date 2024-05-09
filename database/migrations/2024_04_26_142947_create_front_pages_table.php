@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('year')->nullable();
 
             // Only Applicable for Personal File
-            $table->string('photo')->nullable(); 
             $table->string('name_of_the_officer')->nullable(); // Only Applicable for Personal File
             $table->string('designation')->nullable(); // Only Applicable for Personal File
             $table->date('dob')->nullable();
@@ -33,7 +32,8 @@ return new class extends Migration
             $table->string('date_of_appointment')->nullable();
             $table->string('appoint_letter_no')->nullable();
             $table->string('wnop_no')->nullable();
-            $table->date('date_of_increment')->nullable();
+            $table->string('date_of_increment')->nullable();
+            $table->date('date_of_retirement')->nullable();
             $table->string('private_address')->nullable();
             
             $table->string('user_id');
