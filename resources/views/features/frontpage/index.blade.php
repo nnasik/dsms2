@@ -70,7 +70,7 @@
                             <div class="card m-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="{{asset('img/frontpage/subject-file.png')}}"
+                                        <img src="{{asset('img/frontpage/personal-file.png')}}"
                                             class="img-fluid rounded-start p-2" alt="...">
                                     </div>
                                     <div class="col-md-8">
