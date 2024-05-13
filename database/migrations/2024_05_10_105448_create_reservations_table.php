@@ -15,21 +15,23 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            
-            $table->string('resource');
-            $table->datetime('from');
-            $table->datetime('to');
-            $table->mediumText('event');
-
+            $table->unsignedBigInteger('resource_id')->nullable();
+            $table->date('event_date');
+            $table->string('name_of_event');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->integer('participations');
+            $table->text('note');
             $table->string('reserver');
-            $table->datetime('request_on');
-
+            $table->string('status')->default('Requested');
+            $table->dateTime('requested_on');
+            $table->dateTime('approved_on')->nullable();
             $table->string('approved_by')->nullable();
-            $table->datetime('approved_on')->nullable();
-
-            $table->string('status');
-            $table->mediumText('note')->nullable();
+            
             $table->timestamps();
+
+            $table->foreign('reserver')->references('id')->on('users');
+            $table->foreign('approved_by')->references('id')->on('users');
         });
     }
 

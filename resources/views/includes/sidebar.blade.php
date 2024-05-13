@@ -128,6 +128,15 @@
           </a>
         </li>
 
+        <li class="nav-item">
+          <a href="{{route('reservation.index')}}" class="nav-link {{ request()->is('reservations') ? 'active' : '' }}">
+            <i class="nav-icon fa fa-calendar"></i>
+            <p>
+              Hall Reservations
+            </p>
+          </a>
+        </li>
+
         @can('manage.users')
         <li class="nav-item">
           <a href="/users" class="nav-link {{ request()->is('users') ? 'active' : '' }}">

@@ -74,8 +74,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/mail/uploadreply', [MailController::class,'upload_reply_document']);
 
     // Reservations
-    Route::get('/reservations', [ReservationController::class,'reservations'])->name('Reservations');
+    Route::get('/reservations', [ReservationController::class,'reservations'])->name('reservation.index');
+    Route::get('/reservations/json', [ReservationController::class,'json'])->name('reservation.json');
     Route::get('/reservation/new', [ReservationController::class,'new'])->name('News');
+    Route::post('/reservation/store', [ReservationController::class,'store'])->name('reservation.store');
 
     // Blog
     Route::get('/blog', [BlogController::class,'posts'])->name('DSKPW Blog');
