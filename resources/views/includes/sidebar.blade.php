@@ -123,7 +123,7 @@
           <a href="{{route('frontpage.index')}}" class="nav-link {{ request()->is('frontpage') ? 'active' : '' }}">
             <i class="nav-icon fa fa-file-pdf"></i>
             <p>
-              Front Page
+              My Documents
             </p>
           </a>
         </li>

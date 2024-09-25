@@ -51,7 +51,7 @@
                             <div class="card m-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="{{asset('img/frontpage/subject-file.png')}}"
+                                        <img src="{{asset('img/frontpage/register.png')}}"
                                             class="img-fluid rounded-start p-2" alt="...">
                                     </div>
                                     <div class="col-md-8">
@@ -60,7 +60,7 @@
                                             <p class="card-text">Registers used in all Branches. Eg. Mail Register,
                                             </p>
                                             <a href="" class="btn btn-outline-success" data-toggle="modal"
-                                                data-target="#create-subject-file-modal">Create</a>
+                                                data-target="#create-register-modal">Create</a>
                                         </div>
                                     </div>
                                 </div>
@@ -89,9 +89,52 @@
 
                 </div>
             </div>
-            <h2 class="">My Front Pages</h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="">My Documents</h2>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <a class="btn btn-outline-primary"
+                        href="{{route('movementcard.index')}}">Movement Card</a>
+                    <a class="btn btn-outline-primary"
+                        href="{{route('caseregister.index')}}">Case Register</a>
+                    </div>
+            </div>
+
             <div class="row">
                 <div class="card p-3">
+
+                    <div class="card-header">
+                        <h3>Registers</h3>
+                    </div>
+
+                    <div class="row mt-3">
+                        @foreach($frontpages as $frontpage)
+                        @if($frontpage->type=='register')
+                        <div class="col-lg-3 col-md-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>{{$frontpage->file_no}}</h5>
+                                    <h6 class="card-title">{{$frontpage->heading}}</h6>
+                                    <p class="card-text">
+                                        {{$frontpage->sub_heading}}
+                                        <br>
+                                        {{$frontpage->year}}
+
+                                    </p>
+                                    <a href="{{route('frontpage.pdf',$frontpage->id)}}" target="_blank"
+                                        class="btn btn-primary m-1"><i class="fa fa-download" aria-hidden="true"></i>
+                                        Front Page A4</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach
+
+                    </div>
+
                     <div class="card-header">
                         <h3>Subject Files</h3>
                     </div>
@@ -121,6 +164,8 @@
 
                     </div>
 
+
+
                     <div class="card-header">
                         <h3>Personal Files</h3>
                     </div>
@@ -139,6 +184,10 @@
                                         class="btn btn-primary m-1"><i class="fa fa-download" aria-hidden="true"></i>
                                         Front Page A4</a>
 
+                                    <a href="{{route('frontpage.pdf',$frontpage->id)}}" target="_blank"
+                                        class="btn btn-primary m-1"><i class="fa fa-download" aria-hidden="true"></i>
+                                        Movement Card A4</a>
+
                                 </div>
                             </div>
                         </div>
@@ -154,10 +203,9 @@
         <!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-
 </div>
 
 @include('features.frontpage.modals.create_subject_file')
+@include('features.frontpage.modals.create_register')
 @include('features.frontpage.modals.create_personal_file')
 @endsection

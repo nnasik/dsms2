@@ -98,6 +98,9 @@ class FrontPageController extends Controller{
         elseif($frontpage->type=='subjectfile') {
             $html = view('features.frontpage.templates.subjectfile')->with($data)->render();
         }
+        elseif($frontpage->type=='register') {
+            $html = view('features.frontpage.templates.register')->with($data)->render();
+        }
         
         
         $pdf->loadHtml($html);

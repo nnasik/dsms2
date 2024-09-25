@@ -211,4 +211,9 @@ class UsersController extends Controller
         }
         return $randomString;
     }
+
+    public function activeUsersList(){
+        $active_users = User::where('status','Active')->get();
+        return $active_users;
+    }
 }

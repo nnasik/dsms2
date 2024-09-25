@@ -8,6 +8,8 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\FrontPageController;
+use App\Http\Controllers\CaseRegisterController;
+use App\Http\Controllers\MovementCardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     // User Account
     Route::get('/users', [UsersController::class,'users'])->name('Users');
     Route::get('/user/view/{id}', [UsersController::class,'view'])->name('User');
+    Route::get('/users/list/active', [UsersController::class,'activeUsersList'])->name('users.list.active');
     Route::get('/ajax/user-autocomplete-search', [UsersController::class,'selectSearch']);
 
     // User Account Requests
@@ -99,6 +102,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/frontpage/pdf/{id}', [FrontPageController::class,'generatePDF'])->name('frontpage.pdf');
     Route::post('/frontpage/store/subjectfile', [FrontPageController::class,'storeSubjectFile'])->name('frontpage.store.subjectfile');
     Route::post('/frontpage/store/personalfile', [FrontPageController::class,'storePersonalFile'])->name('frontpage.store.personalfile');
+    Route::post('/frontpage/store/register', [FrontPageController::class,'storeSubjectFile'])->name('frontpage.store.register');
+
+    // Case Register
+    Route::get('/caseregister',[CaseRegisterController::class,'index'])->name('caseregister.index');
+    Route::get('/caseregister/store',[CaseRegisterController::class,'store'])->name('caseregister.store');
     
+    // Movement Card
+    Route::get('/movementcard',[MovementCardController::class,'index'])->name('movementcard.index');
+    Route::post('/frontpage/pdf', [MovementCardController::class,'generatePDF'])->name('movementcard.pdf');
     
 });
