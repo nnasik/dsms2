@@ -129,6 +129,15 @@
         </li>
 
         <li class="nav-item">
+          <a href="{{route('cx.index')}}" class="nav-link {{ request()->is('cx') ? 'active' : '' }}">
+            <i class="nav-icon fa fa-user"></i>
+            <p>
+              Service Consumers
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a href="{{route('reservation.index')}}" class="nav-link {{ request()->is('reservations') ? 'active' : '' }}">
             <i class="nav-icon fa fa-calendar"></i>
             <p>
@@ -136,6 +145,36 @@
             </p>
           </a>
         </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-link"  class="nav-link {{ request()->is('reservations') ? 'active' : '' }}">
+              <i class="nav-icon fa fa-landmark"></i>
+              <p>
+                Land
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Info</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/compose.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Compose</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Read</p>
+                </a>
+              </li>
+            </ul>
+          </li>
 
         @can('manage.users')
         <li class="nav-item">
@@ -156,6 +195,8 @@
             </p>
           </a>
         </li>
+
+        
 
 
 

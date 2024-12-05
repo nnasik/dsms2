@@ -10,6 +10,7 @@ use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\FrontPageController;
 use App\Http\Controllers\CaseRegisterController;
 use App\Http\Controllers\MovementCardController;
+use App\Http\Controllers\ServiceConsumerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Auth::routes();
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth','check.status']], function () {
 
     // Profile
     Route::get('/', [ProfileController::class,'profile'])->name('Profile');
@@ -111,5 +112,13 @@ Route::group(['middleware' => ['auth']], function () {
     // Movement Card
     Route::get('/movementcard',[MovementCardController::class,'index'])->name('movementcard.index');
     Route::post('/frontpage/pdf', [MovementCardController::class,'generatePDF'])->name('movementcard.pdf');
+
+    
+    // Service Consumer
+    Route::get('/cx',[ServiceConsumerController::class,'index'])->name('cx.index');
+    Route::get('/cx/find',[ServiceConsumerController::class,'find'])->name('cx.find');  
+    Route::get('/cx/create/{id}',[ServiceConsumerController::class,'create'])->name('cx.create');  
+    Route::get('/get-all-services/{keyword}', [ServiceConsumerController::class, 'getAllServices']);
+    
     
 });

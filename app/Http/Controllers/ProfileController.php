@@ -14,6 +14,7 @@ class ProfileController extends Controller
     public function profile(){
         $user = Auth::user();
         $data['user'] = $user;
+
         return view('features.profile.profile')->with($data);
     }
 
