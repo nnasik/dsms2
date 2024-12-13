@@ -24,9 +24,9 @@
                 </div>
                 <!-- /.col -->
             </div>
-
+            <form action="" method="post">
             <div class="row p-3">
-
+            
                 <div class="card card-primary p-0">
                     <div class="card-header">
                         <h3 class="card-title">Service Consumer Details</h3>
@@ -74,8 +74,8 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer text-end">
-                        <div class="btn btn-success disabled" id="next" onclick="enableServiceAndSetReadonly()">Next
-                        </div>
+                        <button class="btn btn-success disabled" id="next" onclick="enableServiceAndSetReadonly()">Next
+                        </button>
                     </div>
                 </div>
 
@@ -84,10 +84,12 @@
             <div class="row px-3">
 
                 <div class="card card-primary p-0">
+                
                     <div class="card-header">
-                        <h3 class="card-title">Requested for Services </h3>
+                        <h3 class="card-title">Requested Services </h3>
                     </div>
                     <div class="card-body row">
+                        
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="input-group mb-3">
@@ -96,22 +98,48 @@
                                     </div>
                                     <input type="text" name="service" id="service" class="form-control"
                                         placeholder="Search Service" disabled>
-                                    <ul id="suggestions" class="list-group mt-2"
-                                        style="display: none; max-height: 200px; overflow-y: auto; position: relative; z-index: 1000;">
-                                    </ul>
-
+                                        <input type="hidden" name="serviceID" id="serviceID">
                                 </div>
+                                <style>
+                                    ul#suggestions>li{
+                                        padding: 5px;
+                                    }
+                                    ul#suggestions>li:hover{
+                                        cursor: pointer;
+                                        background-color: #FFD;
+                                        padding: 5px;
+                                    }
+                                </style>
+                                <ul id="suggestions" class="list-group mt-2"
+                                        style="display: none; 
+                                        max-height: 200px; 
+                                        overflow-y: auto; 
+                                        position: absolute; 
+                                        z-index: 1000;
+                                        border:1px solid #333;
+                                        background-color: #EEE;
+                                        top: 30px;
+                                        width: 97.5%;
+                                        ">
+                                </ul>
                             </div>
+                        </div>
+                        <div class="row">
+                            <h4 id="service-id">Service ID : </h4>
+                            <h4 id="service-name">Service : </h4>
+                            <h4 id="service-branch">Branch : </h4>
+                            <h4 id="service-officer">Officer : </h4>
                         </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer text-end">
-                        <div class="btn btn-success disabled">Register</div>
+                        <button type="submit" id="submit" class="btn btn-success" disabled>Register</button>
                     </div>
+                    
                 </div>
 
             </div>
-
+        </form>
         </div>
         <!-- /.container-fluid -->
     </div>
@@ -248,6 +276,10 @@
         nicField.setAttribute('readonly', true);
         scNameField.setAttribute('readonly', true);
         phoneField.setAttribute('readonly', true);
+
+        const nextButton = document.getElementById('next');
+        nextButton.setAttribute('disabled',true);
+
     }
 
 </script>
@@ -255,6 +287,15 @@
     document.getElementById('service').addEventListener('input', function () {
         const keyword = this.value.trim();
         const suggestionsBox = document.getElementById('suggestions');
+
+        const serviceName = document.getElementById('service-name');
+        const serviceBranch = document.getElementById('service-branch');
+        const serviceOfficer = document.getElementById('service-officer');
+        const serviceId = document.getElementById('service-id');
+
+        const service_ID = document.getElementById('serviceID');
+        const submitButton = document.getElementById('submit');
+
 
         if (keyword.length > 1) {
             // Send AJAX request to fetch matching services
@@ -271,8 +312,16 @@
                             li.textContent = `${service.name} (${service.branch})`;
                             li.style.cursor = 'pointer';
                             li.addEventListener('click', function () {
-                                document.getElementById('service').value = service.name;
                                 suggestionsBox.style.display = 'none';
+                                submitButton.disabled = false;
+                                document.getElementById('service').value = service.name;
+                                serviceName.innerHTML = "Service : " + service.name;
+                                serviceBranch.innerHTML = "Branch : " + service.branch;
+                                serviceOfficer.innerHTML = "Officer : " + service.officer;
+                                serviceId.innerHTML = "Service ID : " + service.id;
+                                service_ID.setAttribute('value',service.id);
+                                // add selected field details
+                                
                             });
                             suggestionsBox.appendChild(li);
                         });

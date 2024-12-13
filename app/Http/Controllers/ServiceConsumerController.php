@@ -24,7 +24,14 @@ class ServiceConsumerController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'nic'=>'required',
+            'sc_name'=>'required',
+            'serviceID'=>'required',
+            'phone'=>'required'
+        ]);
 
+        
     }
 
     public function update(){
