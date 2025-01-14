@@ -23,6 +23,11 @@ class ServiceConsumerController extends Controller
             $data['endOfDay']
         ])->get()->count();
 
+        $data['service_provided_today'] = ServiceRequest::where('status','Service Provided')->whereBetween('opened_on',[
+            $data['startOfDay'],
+            $data['endOfDay']
+        ])->get()->count();
+
         $data['sr_count_total'] = ServiceRequest::all()->count();
         // End of SR Count
 
