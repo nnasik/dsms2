@@ -18,14 +18,18 @@ return new class extends Migration
             $table->string('cs_nic');
             $table->string('cs_phone');
             $table->string('cs_name');
-            $table->string('service_requested');
-            $table->datetime('requested_on');
-            $table->datetime('closed_on');
-            $table->string('recorded_by');
-            $table->string('status');
+            $table->unsignedBigInteger('service_requested');
+            $table->datetime('opened_on');
+            $table->string('opened_by');
+            $table->datetime('closed_on')->nullable();
+            $table->string('closed_by')->nullable();
+            $table->string('status')->nullable();
+            
             $table->timestamps();
 
-            $table->foreign('recorded_by')->references('nic')->on('users');
+            $table->foreign('service_requested')->references('id')->on('services');
+            $table->foreign('opened_by')->references('id')->on('users');
+            $table->foreign('closed_by')->references('id')->on('users');
         });
     }
 

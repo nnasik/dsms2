@@ -2,8 +2,11 @@
 
 @section('content')
 <div class="content-wrapper">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Custom CSS-->
     <link rel="stylesheet" href="{{asset('css/select2.min.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -43,14 +46,41 @@
                 <h3>Today Summary</h3>
                 <div class="card">
                     <div class="row mt-3">
-                        @include('features.cx.partials.today_pro_summary')
+                        @include('features.cx.partials.today_summary')
                     </div>
-                    
                     <div class="row">
-                        @include('features.cx.partials.today_table')
+                        @include('features.cx.partials.today_pie_chart')
                     </div>
                 </div>
             </div>
+            
+            <div class="row mt-3">
+                <h3>Month Summary</h3>
+                <div class="card">
+                    <div class="row py-3">
+                        @include('features.cx.partials.month_summary')
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <h3>Year Summary</h3>
+                <div class="card">
+                    <div class="row py-3">
+                        @include('features.cx.partials.year_summary')
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <h3>Total Summary</h3>
+                <div class="card">
+                    <div class="row py-3">
+                        @include('features.cx.partials.total_summary')
+                    </div>
+                </div>
+            </div>
+        
         </div>
         <!-- /.container-fluid -->
     </div>

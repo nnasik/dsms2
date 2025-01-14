@@ -36,7 +36,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-@include('includes/toast')
 @include('includes/script')
+@include('includes/toast')
 </body>
 </html>

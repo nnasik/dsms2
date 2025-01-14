@@ -113,12 +113,20 @@ Route::group(['middleware' => ['auth','check.status']], function () {
     Route::get('/movementcard',[MovementCardController::class,'index'])->name('movementcard.index');
     Route::post('/frontpage/pdf', [MovementCardController::class,'generatePDF'])->name('movementcard.pdf');
 
-    
+
     // Service Consumer
     Route::get('/cx',[ServiceConsumerController::class,'index'])->name('cx.index');
+    Route::get('/cx/dashboard',[ServiceConsumerController::class,'dashboard'])->name('cx.dashboard');
     Route::get('/cx/find',[ServiceConsumerController::class,'find'])->name('cx.find');  
     Route::get('/cx/create/{id}',[ServiceConsumerController::class,'create'])->name('cx.create');  
+    Route::post('/cx/store',[ServiceConsumerController::class,'store'])->name('cx.store');
+    Route::post('/cx/view',[ServiceConsumerController::class,'view'])->name('cx.view');
+
+    Route::post('/cx/sr/update',[ServiceConsumerController::class,'updateSR'])->name('sr.update');
+    Route::get('/cx/srs/{type}/{from}/{to}',[ServiceConsumerController::class,'srs'])->name('cx.srs');
+    Route::get('/cx/sr/{id}',[ServiceConsumerController::class,'viewSR'])->name('cx.sr.view');
+
+    // Services
     Route::get('/get-all-services/{keyword}', [ServiceConsumerController::class, 'getAllServices']);
-    
     
 });

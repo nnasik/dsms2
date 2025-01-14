@@ -11,7 +11,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-9">
-                    <h3 class="m-0">New Service Request - {{$id}}</h3>
+                    <h3 class="m-0">New Service Request</h3>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3">
@@ -24,8 +24,9 @@
                 </div>
                 <!-- /.col -->
             </div>
-            <form action="" method="post">
+            <form action="{{route('cx.store')}}" method="post">
             <div class="row p-3">
+                @csrf
             
                 <div class="card card-primary p-0">
                     <div class="card-header">
@@ -40,7 +41,7 @@
                                     </div>
 
                                     <input type="text" name="nic" id="nic" class="form-control"
-                                        placeholder="NIC Number">
+                                        placeholder="NIC Number" value="{{$nic}}">
                                 </div>
                                 <span id="nic-error" style="color: red; display: none;">Invalid NIC number
                                     format.</span>
@@ -51,7 +52,7 @@
                                         <span class="input-group-text"><i class="fas fa-user"></i></span></span>
                                     </div>
                                     <input type="text" name="sc_name" id="sc_name" class="form-control"
-                                        placeholder="SC Name">
+                                        placeholder="SC Name" value="{{$name}}">
                                 </div>
                                 <span id="sc-name-error" style="color: red; display: none;">This field is
                                     required.</span>
@@ -62,7 +63,7 @@
                                         <span class="input-group-text"><i class="fas fa-phone"></i></span></span>
                                     </div>
                                     <input type="text" name="phone" id="phone" class="form-control"
-                                        placeholder="Phone Number">
+                                        placeholder="Phone Number" value="{{$phone}}">
                                 </div>
                                 <span id="phone-error" style="color: red; display: none;">Phone number must be 10 digits
                                     and start with 0.</span>

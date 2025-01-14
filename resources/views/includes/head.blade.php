@@ -34,4 +34,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 
+<!-- jQuery -->
+<!--<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>-->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

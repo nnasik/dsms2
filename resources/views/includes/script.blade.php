@@ -1,7 +1,3 @@
-<!-- jQuery -->
-<!--<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>-->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
 <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <!-- overlayScrollbars -->
