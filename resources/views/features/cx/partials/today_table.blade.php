@@ -18,7 +18,7 @@
                    
                    <tr>
                       <td>{{$service_request->cs_name}} ({{$service_request->cs_phone}})</td>
-                      <td>{{$service_request->service->name}}</td>
+                      <td>{{$service_request->service->name}} - {{$service_request->service->branch}}</td>
                       <td>{{$service_request->opened_on}}</td>
                       <td>{{$service_request->updated_at}}</td>
                       <td>{{$service_request->status}}</td>
