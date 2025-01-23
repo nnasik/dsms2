@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('service_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('cs_nic');
-            $table->string('cs_phone');
+            $table->string('cs_nic')->nullable();
+            $table->string('cs_phone')->nullable();
             $table->string('cs_name');
             $table->unsignedBigInteger('service_requested');
             $table->datetime('opened_on');
@@ -24,9 +24,7 @@ return new class extends Migration
             $table->datetime('closed_on')->nullable();
             $table->string('closed_by')->nullable();
             $table->string('status')->nullable();
-            
             $table->timestamps();
-
             $table->foreign('service_requested')->references('id')->on('services');
             $table->foreign('opened_by')->references('id')->on('users');
             $table->foreign('closed_by')->references('id')->on('users');

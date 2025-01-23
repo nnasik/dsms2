@@ -44,13 +44,13 @@
 <!-- ./col -->
 <div class="col-lg-3 col-6">
     <!-- small box -->
-    @if(0 > 0)
+    @if($sr_count_pending_today > 0)
         <div class="small-box bg-warning">
     @else
         <div class="small-box bg-secondary">
     @endif
         <div class="inner">
-            <h3>0</h3>
+            <h3>{{$sr_count_pending_today}}</h3>
 
             <p>Pending SR (Today)</p>
         </div>

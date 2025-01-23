@@ -35,7 +35,7 @@
                                     </span>
                                 </div>
 
-                                <input type="text" name="inward_register_reference" class="form-control" value="{{$service_request->service->name}}" />
+                                <input type="text" name="inward_register_reference" class="form-control" value="{{$service_request->service->name}} - {{$service_request->service->branch}}" />
                             </div>
                             <!-- /input-group -->
                         </div>

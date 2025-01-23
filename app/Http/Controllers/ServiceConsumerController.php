@@ -23,10 +23,12 @@ class ServiceConsumerController extends Controller
             $data['endOfDay']
         ])->get()->count();
 
-        $data['service_provided_today'] = ServiceRequest::where('status','Service Provided')->whereBetween('opened_on',[
+        $data['service_provided_today'] = ServiceRequest::where('status','Completed')->whereBetween('opened_on',[
             $data['startOfDay'],
             $data['endOfDay']
         ])->get()->count();
+
+        $data['sr_count_pending_today'] = $data['sr_count_today'] - $data['service_provided_today'];
 
         $data['sr_count_total'] = ServiceRequest::all()->count();
         // End of SR Count
@@ -35,6 +37,8 @@ class ServiceConsumerController extends Controller
             $data['startOfDay'],
             $data['endOfDay']
         ])->get();
+
+        
 
         return view('features.cx.index')->with($data);
     }
@@ -67,22 +71,22 @@ class ServiceConsumerController extends Controller
         // End of SR Count
 
         // Getting Closed Count
-        $data['service_provided_today'] = ServiceRequest::where('status','Service Provided')->whereBetween('opened_on',[
+        $data['service_provided_today'] = ServiceRequest::where('status','Completed')->whereBetween('opened_on',[
             $data['startOfDay'],
             $data['endOfDay']
         ])->get()->count();
 
-        $data['service_provided_this_month'] = ServiceRequest::where('status','Service Provided')->whereBetween('opened_on',[
+        $data['service_provided_this_month'] = ServiceRequest::where('status','Completed')->whereBetween('opened_on',[
             $data['startOfMonth'],
             $data['endOfMonth']
         ])->get()->count();
 
-        $data['service_provided_this_year'] = ServiceRequest::where('status','Service Provided')->whereBetween('opened_on',[
+        $data['service_provided_this_year'] = ServiceRequest::where('status','Completed')->whereBetween('opened_on',[
             $data['startOfYear'],
             $data['endOfYear']
         ])->get()->count();
         
-        $data['service_provided_total'] = ServiceRequest::where('status','Service Provided')->get()->count();
+        $data['service_provided_total'] = ServiceRequest::where('status','Completed')->get()->count();
         // End of Closed Count
 
         // Getting data for Pie Chart
@@ -155,18 +159,21 @@ class ServiceConsumerController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'nic'=>'required',
             'sc_name'=>'required',
             'serviceID'=>'required',
-            'phone'=>'required'
         ]);
 
         $service = Service::findOrFail($request->serviceID);
 
         $service_request = New ServiceRequest();
         $service_request->cs_name = $request->sc_name;
-        $service_request->cs_phone = $request->phone;
-        $service_request->cs_nic = $request->nic;
+        if($request->phone) {
+            $service_request->cs_phone = $request->phone;
+        }
+        if ($request->nic) {
+            $service_request->cs_nic = $request->nic;
+        }
+        
         $service_request->service_requested = $request->serviceID;
         $service_request->opened_on = now();
         $service_request->opened_by = Auth::user()->id;

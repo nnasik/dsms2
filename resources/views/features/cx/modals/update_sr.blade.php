@@ -38,6 +38,7 @@
                             <select name="status" class="form-control" id="status">
                                 <option value="Completed">Completed</option>
                                 <option value="Document Pending">Document Pending</option>
+                                <option value="Reopen">Reopen</option>
                                 <option value="Waiting for SC Action">Waiting for SC Action</option>
                                 <option value="Waiting for Approval">Waiting for Approval</option>
                                 <option value="Processing">Processing</option>
