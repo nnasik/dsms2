@@ -49,12 +49,12 @@
     <div class="row m-0 p-0">
         <div class="m-0 p-0">
             <div class="m-2 rounded" style="text-align: center; border:2px solid #000">
-                <h1 class="" style="font-size:50pt">{{$frontpage->heading}}</h1>
+                <h1 class="" style="font-size:40pt">{{$frontpage->heading}}</h1>
                 @if($frontpage->sub_heading)
-                <h3 class="" style="font-size:30pt">{{$frontpage->sub_heading}}</h3>
+                <h3 class="" style="font-size:22pt">{{$frontpage->sub_heading}}</h3>
                 @endif
                 @if($frontpage->year)
-                <h3 class="" style="font-size:40pt">{{$frontpage->year}}</h3>
+                <h3 class="" style="font-size:32pt">{{$frontpage->year}}</h3>
                 @endif
             </div>
 

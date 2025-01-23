@@ -34,7 +34,7 @@
                     <div class="col">
                         <div class="input-group mr-3">
                             <span class="input-group-text" id="basic-addon1">No. of total sheets : </span>
-                            <input type="text" name="no_of_total_sheets" class="form-control" placeholder="Eg. 126">
+                            <input type="text" name="no_of_total_sheets" class="form-control" placeholder="Eg. 130">
                         </div>
                     </div>
                 </div>
