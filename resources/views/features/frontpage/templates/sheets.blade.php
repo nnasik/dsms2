@@ -32,9 +32,8 @@
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Emblem_of_Sri_Lanka.svg/800px-Emblem_of_Sri_Lanka.svg.png"
                 alt="" srcset="">
             <br>
-            <br>
-            <h2 style="font-size:30pt;">DIVISIONAL SECRETARIAT</h2>
-            <h2 style="font-size:21pt;">KORALAIPATTU WEST - ODDAMAVADI</h2>
+            <h2 style="font-size:28pt;">DIVISIONAL SECRETARIAT</h2>
+            <h2 style="font-size:18pt;">KORALAIPATTU WEST - ODDAMAVADI</h2>
         </div>
     </div>
     <br>
@@ -80,7 +79,7 @@
             </table>
         </div>
     </div>
-    <div class="m-2 p-2">
+    <div class="m-2 mt-1 p-2">
         <h4>Prepared by : {{$request->prepared_by}}</h4>
         <br>
         <h4>Checked by : {{$request->checked_by}}</h4>
