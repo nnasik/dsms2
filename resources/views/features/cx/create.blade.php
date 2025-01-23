@@ -335,7 +335,6 @@
             suggestionsBox.style.display = 'none';
         }
     });
-Flags to track if the user has interacted with each field
 </script>
 @include('features.caseregister.modals.case_register_in')
 @endsection
