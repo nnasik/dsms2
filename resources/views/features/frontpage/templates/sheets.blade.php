@@ -32,7 +32,7 @@
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Emblem_of_Sri_Lanka.svg/800px-Emblem_of_Sri_Lanka.svg.png"
                 alt="" srcset="">
             <br>
-            <h2 style="font-size:28pt;">DIVISIONAL SECRETARIAT</h2>
+            <h2 style="font-size:26pt;">DIVISIONAL SECRETARIAT</h2>
             <h2 style="font-size:18pt;">KORALAIPATTU WEST - ODDAMAVADI</h2>
         </div>
     </div>
@@ -63,7 +63,7 @@
     <br>
     <div class="m-0 p-0">
         <div class="mx-2 p-0">
-            <table class="table table-bordered" style="font-size:18pt">
+            <table class="table table-bordered" style="font-size:16pt">
                 <tr>
                     <td style="border:solid 3px #000; width:50%"><h3>Number of Sheets</h3></td>
                     <td style="border:solid 3px #000"><h3>{{$request->no_of_sheets}} ({{ucwords($no_of_sheets_in_words)}})</h3> </td>
@@ -79,7 +79,7 @@
             </table>
         </div>
     </div>
-    <div class="m-2 mt-1 p-2">
+    <div class="mt-1 p-2">
         <h4>Prepared by : {{$request->prepared_by}}</h4>
         <br>
         <h4>Checked by : {{$request->checked_by}}</h4>
