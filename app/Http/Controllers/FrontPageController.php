@@ -10,6 +10,8 @@ use Dompdf\Options;
 use Session;
 use Redirect;
 use Auth;
+use App\Services\NumberToWordsService;
+
 
 class FrontPageController extends Controller{
 
@@ -115,6 +117,49 @@ class FrontPageController extends Controller{
         $pdf->setBasePath(public_path());
 
         
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+
+        // Create a response with PDF content and appropriate headers
+        return new Response($pdf->output(),200,[
+            'Content-Type'=> 'application/pdf',
+        ]);
+        
+    }
+
+    public function sheetsPdf(Request $request){
+        $request->validate([
+            'sheet_page_id'=>'required',
+            'no_of_sheets'=>'required',
+            'no_of_name_list_sheets'=>'required',
+            'no_of_total_sheets'=>'required',
+            'prepared_by'=>'required',
+            'checked_by'=>'required',
+            'certified_by'=>'required',
+        ]);
+
+        $frontpage = FrontPage::findOrFail($request->sheet_page_id);
+        $data['frontpage'] = $frontpage;
+        $data['request'] = $request;
+
+        $numberToWordsService = new NumberToWordsService();
+        $data['no_of_sheets_in_words'] = $numberToWordsService->convert($request->no_of_sheets);
+        $data['no_of_name_list_sheets_in_words'] = $numberToWordsService->convert($request->no_of_name_list_sheets);
+        $data['no_of_total_sheets_words'] = $numberToWordsService->convert($request->no_of_total_sheets);
+    
+        $pdf = new Dompdf();
+        $html = view('features.frontpage.templates.sheets')->with($data)->render();
+        $pdf->loadHtml($html);
+
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isPhpEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        //$options->set('defaultFont', 'Helvetica');
+        $pdf->setOptions($options);
+        
+        $pdf->setBasePath(public_path());
+
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
 

@@ -101,6 +101,7 @@ Route::group(['middleware' => ['auth','check.status']], function () {
 
     Route::get('/frontpage', [FrontPageController::class,'index'])->name('frontpage.index');
     Route::get('/frontpage/pdf/{id}', [FrontPageController::class,'generatePDF'])->name('frontpage.pdf');
+    Route::post('/frontpage/sheetspage', [FrontPageController::class,'sheetsPdf'])->name('sheetspage.pdf');
     Route::post('/frontpage/store/subjectfile', [FrontPageController::class,'storeSubjectFile'])->name('frontpage.store.subjectfile');
     Route::post('/frontpage/store/personalfile', [FrontPageController::class,'storePersonalFile'])->name('frontpage.store.personalfile');
     Route::post('/frontpage/store/register', [FrontPageController::class,'storeSubjectFile'])->name('frontpage.store.register');

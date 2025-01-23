@@ -17,7 +17,7 @@
         .logo {
             width: 70px;
             display: block;
-            margin: 0px auto;
+            margin: 10px auto;
         }
 
     </style>

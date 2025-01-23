@@ -125,7 +125,9 @@
                                     <a href="{{route('frontpage.pdf',$frontpage->id)}}" target="_blank"
                                         class="btn btn-primary m-1"><i class="fa fa-download" aria-hidden="true"></i>
                                         Front Page A4</a>
-
+                                    <a data-toggle="modal" data-target="#create-sheets-page-modal" onclick="setSheetPageID({{$frontpage->id}})"
+                                        class="btn btn-primary m-1"><i class="fa fa-download" aria-hidden="true"></i>
+                                        Sheets Page A4</a>
 
                                 </div>
                             </div>
@@ -204,8 +206,13 @@
     </div>
     <!-- /.content-header -->
 </div>
-
+<script>
+    function setSheetPageID(page_id){
+        document.getElementById("sheet_page_id").value =page_id;
+    }
+</script>
 @include('features.frontpage.modals.create_subject_file')
 @include('features.frontpage.modals.create_register')
 @include('features.frontpage.modals.create_personal_file')
+@include('features.frontpage.modals.sheets_page')
 @endsection

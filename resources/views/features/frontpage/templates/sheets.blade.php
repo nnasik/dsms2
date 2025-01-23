@@ -12,6 +12,7 @@
     <style>
         body {
             border: solid 3px #000;
+            font-family: "Times New Roman";
         }
 
         .logo {
@@ -25,15 +26,6 @@
 
 <body>
 
-    <div class="row m-0 p-0 ">
-        <div class="m-0 p-0">
-            <div class="m-2" style="text-align: right;width: fit-content;block-size: fit-content;">
-                <strong class="border border-dark p-2">{{$frontpage->file_no}}</strong>
-            </div>
-
-        </div>
-    </div>
-
     <div class="row m-0 p-0">
         <div class="" style="text-align: center;width: 100%; margin:0;padding:0">
             <img class="logo"
@@ -46,16 +38,15 @@
         </div>
     </div>
     <br>
-    <br>
     <div class="row m-0 p-0">
         <div class="m-0 p-0">
-            <div class="m-2" style="text-align: center;">
+            <div class="m-0" style="text-align: center;">
                 <span class="border border-dark rounded p-2" style="font-size:20pt">{{$frontpage->branch}}</span>
             </div>
 
         </div>
     </div>
-    <br><br>
+    <br>
     <div class="row m-0 p-0">
         <div class="m-0 p-0">
             <div class="m-2 rounded" style="text-align: center; border:2px solid #000">
@@ -66,37 +57,35 @@
                 @if($frontpage->year)
                 <h3 class="" style="font-size:40pt">{{$frontpage->year}}</h3>
                 @endif
-
             </div>
 
         </div>
     </div>
-    <div class="m-0 p-0" style="position: absolute; bottom: 0; left:10px;">
-        <div class="m-0 p-0">
-            <div class="m-2" style="text-align: left;">
-                <p style="font-size: 13pt;">
-                    <img height="20"
-                        src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_local_phone_48px-64.png"
-                        alt="Phone"> : 065 2257 716
-                    <br>
-                    <img height="20" src="https://cdn0.iconfinder.com/data/icons/picons-social/57/67-gmail-64.png"
-                        alt="Email"> : moha.divi.koralaipattuwest@gmail.com
-                    <br>
-                    <img height="20" src="https://cdn1.iconfinder.com/data/icons/material-core/20/language-64.png"
-                        alt="Web">
-                    : koralaipattuwest.ds.gov.lk
-
-                </p>
-            </div>
+    <br>
+    <div class="m-0 p-0">
+        <div class="mx-2 p-0">
+            <table class="table table-bordered" style="font-size:18pt">
+                <tr>
+                    <td style="border:solid 3px #000; width:50%"><h3>Number of Sheets</h3></td>
+                    <td style="border:solid 3px #000"><h3>{{$request->no_of_sheets}} ({{ucwords($no_of_sheets_in_words)}})</h3> </td>
+                </tr>
+                <tr>
+                    <td style="border:solid 3px #000; width:50%"><h3>No. of Name list sheets :</h3></td>
+                    <td style="border:solid 3px #000"><h3>{{$request->no_of_name_list_sheets}} ({{ucwords($no_of_name_list_sheets_in_words)}})</h3> </td>
+                </tr>
+                <tr>
+                    <td style="border:solid 3px #000; width:50%"><h3>No. of Total sheets : </h3></td>
+                    <td style="border:solid 3px #000"><h3>{{$request->no_of_total_sheets}} ({{ucwords($no_of_total_sheets_words)}})</h3></td>
+                </tr>
+            </table>
         </div>
     </div>
-    <div class="m-0 p-0" style="position: absolute; bottom: 0px; right:0px;">
-        <div class="m-0 p-0">
-            <div class="m-2" style="text-align: right;">
-                <img style="height: 200px;" src="https://www.5stoday.com/content/images/custom/5S-wheel-diagram.jpg"
-                    alt="" srcset="">
-            </div>
-        </div>
+    <div class="m-2 p-2">
+        <h4>Prepared by : {{$request->prepared_by}}</h4>
+        <br>
+        <h4>Checked by : {{$request->checked_by}}</h4>
+        <br>
+        <h4>Certified by : {{$request->certified_by}}</h4>
     </div>
 
 

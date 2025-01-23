@@ -149,305 +149,193 @@
 
 </div>
 <script>
-//     // Flags to track if the user has interacted with each field
-//     let nicTouched = false;
-//     let scNameTouched = false;
-//     let phoneTouched = false;
+    // Flags to track if the user has interacted with each field
+    let nicTouched = false;
+    let scNameTouched = false;
+    let phoneTouched = false;
 
-//     // Validate NIC
-//     function validateNIC() {
-//         const nicInput = document.getElementById('nic').value.trim();
-//         const nicError = document.getElementById('nic-error');
-//         const regex12Digits = /^\d{12}$/;
-//         const regexOldNic = /^\d{9}[VXvx]$/;
+    // Validate NIC
+    function validateNIC() {
+        const nicInput = document.getElementById('nic').value.trim();
+        const nicError = document.getElementById('nic-error');
+        const regex12Digits = /^\d{12}$/;
+        const regexOldNic = /^\d{9}[VXvx]$/;
 
-//         if (regex12Digits.test(nicInput) || regexOldNic.test(nicInput)) {
-//             nicError.style.display = 'none';
-//             document.getElementById('nic').classList.add('is-valid');
-//             document.getElementById('nic').classList.remove('is-invalid');
-//             return true;
-//         } else if (nicTouched) {
-//             nicError.style.display = 'inline';
-//             document.getElementById('nic').classList.add('is-invalid');
-//             document.getElementById('nic').classList.remove('is-valid');
-//         }
-//         return false;
-//     }
+        if (regex12Digits.test(nicInput) || regexOldNic.test(nicInput)) {
+            nicError.style.display = 'none';
+            document.getElementById('nic').classList.add('is-valid');
+            document.getElementById('nic').classList.remove('is-invalid');
+            return true;
+        } else if (nicTouched) {
+            nicError.style.display = 'inline';
+            document.getElementById('nic').classList.add('is-invalid');
+            document.getElementById('nic').classList.remove('is-valid');
+        }
+        return false;
+    }
 
-//     // Validate SC Name
-//     function validateSCName() {
-//         const scNameInput = document.getElementById('sc_name').value.trim();
-//         const scNameError = document.getElementById('sc-name-error');
+    // Validate SC Name
+    function validateSCName() {
+        const scNameInput = document.getElementById('sc_name').value.trim();
+        const scNameError = document.getElementById('sc-name-error');
 
-//         if (scNameInput !== '') {
-//             scNameError.style.display = 'none';
-//             document.getElementById('sc_name').classList.add('is-valid');
-//             document.getElementById('sc_name').classList.remove('is-invalid');
-//             return true;
-//         } else if (scNameTouched) {
-//             scNameError.style.display = 'inline';
-//             document.getElementById('sc_name').classList.add('is-invalid');
-//             document.getElementById('sc_name').classList.remove('is-valid');
-//         }
-//         return false;
-//     }
+        if (scNameInput !== '') {
+            scNameError.style.display = 'none';
+            document.getElementById('sc_name').classList.add('is-valid');
+            document.getElementById('sc_name').classList.remove('is-invalid');
+            return true;
+        } else if (scNameTouched) {
+            scNameError.style.display = 'inline';
+            document.getElementById('sc_name').classList.add('is-invalid');
+            document.getElementById('sc_name').classList.remove('is-valid');
+        }
+        return false;
+    }
 
-//     // Validate Phone
-//     function validatePhone() {
-//         const phoneInput = document.getElementById('phone').value.trim();
-//         const phoneError = document.getElementById('phone-error');
-//         const phoneRegex = /^0\d{9}$/;
+    // Validate Phone
+    function validatePhone() {
+        const phoneInput = document.getElementById('phone').value.trim();
+        const phoneError = document.getElementById('phone-error');
+        const phoneRegex = /^0\d{9}$/;
 
-//         if (phoneRegex.test(phoneInput)) {
-//             phoneError.style.display = 'none';
-//             document.getElementById('phone').classList.add('is-valid');
-//             document.getElementById('phone').classList.remove('is-invalid');
-//             return true;
-//         } else if (phoneTouched) {
-//             phoneError.style.display = 'inline';
-//             document.getElementById('phone').classList.add('is-invalid');
-//             document.getElementById('phone').classList.remove('is-valid');
-//         }
-//         return false;
-//     }
+        if (phoneRegex.test(phoneInput)) {
+            phoneError.style.display = 'none';
+            document.getElementById('phone').classList.add('is-valid');
+            document.getElementById('phone').classList.remove('is-invalid');
+            return true;
+        } else if (phoneTouched) {
+            phoneError.style.display = 'inline';
+            document.getElementById('phone').classList.add('is-invalid');
+            document.getElementById('phone').classList.remove('is-valid');
+        }
+        return false;
+    }
 
-//     // Enable or disable the Next button
-//     function checkAllFields() {
-//         const isNICValid = validateNIC();
-//         const isSCNameValid = validateSCName();
-//         const isPhoneValid = validatePhone();
+    // Enable or disable the Next button
+    function checkAllFields() {
+        const isNICValid = validateNIC();
+        const isSCNameValid = validateSCName();
+        const isPhoneValid = validatePhone();
 
-//         const nextButton = document.getElementById('next');
-//         if (isNICValid && isSCNameValid && isPhoneValid) {
-//             nextButton.classList.remove('disabled');
-//             nextButton.classList.add('btn-primary');
-//         } else {
-//             nextButton.classList.add('disabled');
-//             nextButton.classList.remove('btn-primary');
-//         }
-//     }
+        const nextButton = document.getElementById('next');
+        if (isNICValid && isSCNameValid && isPhoneValid) {
+            nextButton.classList.remove('disabled');
+            nextButton.classList.add('btn-primary');
+        } else {
+            nextButton.classList.add('disabled');
+            nextButton.classList.remove('btn-primary');
+        }
+    }
 
-//     // Add event listeners for blur and input events
-//     document.getElementById('nic').addEventListener('blur', function () {
-//         nicTouched = true;
-//         validateNIC();
-//         checkAllFields();
-//     });
+    // Add event listeners for blur and input events
+    document.getElementById('nic').addEventListener('blur', function () {
+        nicTouched = true;
+        validateNIC();
+        checkAllFields();
+    });
 
-//     document.getElementById('sc_name').addEventListener('blur', function () {
-//         scNameTouched = true;
-//         validateSCName();
-//         checkAllFields();
-//     });
+    document.getElementById('sc_name').addEventListener('blur', function () {
+        scNameTouched = true;
+        validateSCName();
+        checkAllFields();
+    });
 
-//     document.getElementById('phone').addEventListener('blur', function () {
-//         phoneTouched = true;
-//         validatePhone();
-//         checkAllFields();
-//     });
+    document.getElementById('phone').addEventListener('blur', function () {
+        phoneTouched = true;
+        validatePhone();
+        checkAllFields();
+    });
 
-//     // Additional validation when typing
-//     document.getElementById('nic').addEventListener('input', function () {
-//         if (nicTouched) validateNIC();
-//         checkAllFields();
-//     });
+    // Additional validation when typing
+    document.getElementById('nic').addEventListener('input', function () {
+        if (nicTouched) validateNIC();
+        checkAllFields();
+    });
 
-//     document.getElementById('sc_name').addEventListener('input', function () {
-//         if (scNameTouched) validateSCName();
-//         checkAllFields();
-//     });
+    document.getElementById('sc_name').addEventListener('input', function () {
+        if (scNameTouched) validateSCName();
+        checkAllFields();
+    });
 
-//     document.getElementById('phone').addEventListener('input', function () {
-//         if (phoneTouched) validatePhone();
-//         checkAllFields();
-//     });
-
-
-//     function enableServiceAndSetReadonly() {
-//         // Enable the "Search Service" field
-//         const serviceField = document.getElementById('service');
-//         serviceField.removeAttribute('disabled'); // Enable the field
-//         serviceField.focus(); // Optionally set focus to the service field
-
-//         // Make the NIC, SC Name, and Phone fields read-only
-//         const nicField = document.getElementById('nic');
-//         const scNameField = document.getElementById('sc_name');
-//         const phoneField = document.getElementById('phone');
-
-//         nicField.setAttribute('readonly', true);
-//         scNameField.setAttribute('readonly', true);
-//         phoneField.setAttribute('readonly', true);
-
-//         const nextButton = document.getElementById('next');
-//         nextButton.setAttribute('disabled',true);
-
-//     }
-
-// </script>
-// <script>
-//     document.getElementById('service').addEventListener('input', function () {
-//         const keyword = this.value.trim();
-//         const suggestionsBox = document.getElementById('suggestions');
-
-//         const serviceName = document.getElementById('service-name');
-//         const serviceBranch = document.getElementById('service-branch');
-//         const serviceOfficer = document.getElementById('service-officer');
-//         const serviceId = document.getElementById('service-id');
-
-//         const service_ID = document.getElementById('serviceID');
-//         const submitButton = document.getElementById('submit');
+    document.getElementById('phone').addEventListener('input', function () {
+        if (phoneTouched) validatePhone();
+        checkAllFields();
+    });
 
 
-//         if (keyword.length > 1) {
-//             // Send AJAX request to fetch matching services
-//             fetch(`/get-all-services/${keyword}`)
-//                 .then(response => response.json())
-//                 .then(data => {
-//                     // Clear previous suggestions
-//                     suggestionsBox.innerHTML = '';
-//                     suggestionsBox.style.display = 'none';
+    function enableServiceAndSetReadonly() {
+        // Enable the "Search Service" field
+        const serviceField = document.getElementById('service');
+        serviceField.removeAttribute('disabled'); // Enable the field
+        serviceField.focus(); // Optionally set focus to the service field
 
-//                     if (data.length > 0) {
-//                         data.forEach(service => {
-//                             const li = document.createElement('li');
-//                             li.textContent = `${service.name} (${service.branch})`;
-//                             li.style.cursor = 'pointer';
-//                             li.addEventListener('click', function () {
-//                                 suggestionsBox.style.display = 'none';
-//                                 submitButton.disabled = false;
-//                                 document.getElementById('service').value = service.name;
-//                                 serviceName.innerHTML = "Service : " + service.name;
-//                                 serviceBranch.innerHTML = "Branch : " + service.branch;
-//                                 serviceOfficer.innerHTML = "Officer : " + service.officer;
-//                                 serviceId.innerHTML = "Service ID : " + service.id;
-//                                 service_ID.setAttribute('value',service.id);
-//                                 // add selected field details
+        // Make the NIC, SC Name, and Phone fields read-only
+        const nicField = document.getElementById('nic');
+        const scNameField = document.getElementById('sc_name');
+        const phoneField = document.getElementById('phone');
+
+        nicField.setAttribute('readonly', true);
+        scNameField.setAttribute('readonly', true);
+        phoneField.setAttribute('readonly', true);
+
+        const nextButton = document.getElementById('next');
+        nextButton.setAttribute('disabled',true);
+
+    }
+
+</script>
+<script>
+    document.getElementById('service').addEventListener('input', function () {
+        const keyword = this.value.trim();
+        const suggestionsBox = document.getElementById('suggestions');
+
+        const serviceName = document.getElementById('service-name');
+        const serviceBranch = document.getElementById('service-branch');
+        const serviceOfficer = document.getElementById('service-officer');
+        const serviceId = document.getElementById('service-id');
+
+        const service_ID = document.getElementById('serviceID');
+        const submitButton = document.getElementById('submit');
+
+
+        if (keyword.length > 1) {
+            // Send AJAX request to fetch matching services
+            fetch(`/get-all-services/${keyword}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Clear previous suggestions
+                    suggestionsBox.innerHTML = '';
+                    suggestionsBox.style.display = 'none';
+
+                    if (data.length > 0) {
+                        data.forEach(service => {
+                            const li = document.createElement('li');
+                            li.textContent = `${service.name} (${service.branch})`;
+                            li.style.cursor = 'pointer';
+                            li.addEventListener('click', function () {
+                                suggestionsBox.style.display = 'none';
+                                submitButton.disabled = false;
+                                document.getElementById('service').value = service.name;
+                                serviceName.innerHTML = "Service : " + service.name;
+                                serviceBranch.innerHTML = "Branch : " + service.branch;
+                                serviceOfficer.innerHTML = "Officer : " + service.officer;
+                                serviceId.innerHTML = "Service ID : " + service.id;
+                                service_ID.setAttribute('value',service.id);
+                                // add selected field details
                                 
-//                             });
-//                             suggestionsBox.appendChild(li);
-//                         });
-//                         suggestionsBox.style.display = 'block';
-//                     }
-//                 })
-//                 .catch(error => console.error('Error fetching services:', error));
-//         } else {
-//             suggestionsBox.innerHTML = '';
-//             suggestionsBox.style.display = 'none';
-//         }
-//     });
-// Flags to track if the user has interacted with each field
-let nicTouched = false;
-let scNameTouched = false;
-let phoneTouched = false;
-
-// Validate NIC
-function validateNIC() {
-    const nicInput = document.getElementById('nic').value.trim();
-    const nicError = document.getElementById('nic-error');
-    const regex12Digits = /^\d{12}$/;
-    const regexOldNic = /^\d{9}[VXvx]$/;
-
-    if (nicInput === "" || regex12Digits.test(nicInput) || regexOldNic.test(nicInput)) {
-        nicError.style.display = 'none';
-        document.getElementById('nic').classList.add('is-valid');
-        document.getElementById('nic').classList.remove('is-invalid');
-        return true;
-    } else if (nicTouched) {
-        nicError.style.display = 'inline';
-        document.getElementById('nic').classList.add('is-invalid');
-        document.getElementById('nic').classList.remove('is-valid');
-    }
-    return false;
-}
-
-// Validate SC Name
-function validateSCName() {
-    const scNameInput = document.getElementById('sc_name').value.trim();
-    const scNameError = document.getElementById('sc-name-error');
-
-    if (scNameInput !== '') {
-        scNameError.style.display = 'none';
-        document.getElementById('sc_name').classList.add('is-valid');
-        document.getElementById('sc_name').classList.remove('is-invalid');
-        return true;
-    } else if (scNameTouched) {
-        scNameError.style.display = 'inline';
-        document.getElementById('sc_name').classList.add('is-invalid');
-        document.getElementById('sc_name').classList.remove('is-valid');
-    }
-    return false;
-}
-
-// Validate Phone
-function validatePhone() {
-    const phoneInput = document.getElementById('phone').value.trim();
-    const phoneError = document.getElementById('phone-error');
-    const phoneRegex = /^0\d{9}$/;
-
-    if (phoneInput === "" || phoneRegex.test(phoneInput)) {
-        phoneError.style.display = 'none';
-        document.getElementById('phone').classList.add('is-valid');
-        document.getElementById('phone').classList.remove('is-invalid');
-        return true;
-    } else if (phoneTouched) {
-        phoneError.style.display = 'inline';
-        document.getElementById('phone').classList.add('is-invalid');
-        document.getElementById('phone').classList.remove('is-valid');
-    }
-    return false;
-}
-
-// Enable or disable the Next button
-function checkAllFields() {
-    const isNICValid = validateNIC();
-    const isSCNameValid = validateSCName();
-    const isPhoneValid = validatePhone();
-
-    const nextButton = document.getElementById('next');
-    if (isSCNameValid) { // Only SC Name is mandatory
-        nextButton.classList.remove('disabled');
-        nextButton.classList.add('btn-primary');
-    } else {
-        nextButton.classList.add('disabled');
-        nextButton.classList.remove('btn-primary');
-    }
-}
-
-// Add event listeners for blur and input events
-document.getElementById('nic').addEventListener('blur', function () {
-    nicTouched = true;
-    validateNIC();
-    checkAllFields();
-});
-
-document.getElementById('sc_name').addEventListener('blur', function () {
-    scNameTouched = true;
-    validateSCName();
-    checkAllFields();
-});
-
-document.getElementById('phone').addEventListener('blur', function () {
-    phoneTouched = true;
-    validatePhone();
-    checkAllFields();
-});
-
-// Additional validation when typing
-document.getElementById('nic').addEventListener('input', function () {
-    if (nicTouched) validateNIC();
-    checkAllFields();
-});
-
-document.getElementById('sc_name').addEventListener('input', function () {
-    if (scNameTouched) validateSCName();
-    checkAllFields();
-});
-
-document.getElementById('phone').addEventListener('input', function () {
-    if (phoneTouched) validatePhone();
-    checkAllFields();
-});
-
+                            });
+                            suggestionsBox.appendChild(li);
+                        });
+                        suggestionsBox.style.display = 'block';
+                    }
+                })
+                .catch(error => console.error('Error fetching services:', error));
+        } else {
+            suggestionsBox.innerHTML = '';
+            suggestionsBox.style.display = 'none';
+        }
+    });
+Flags to track if the user has interacted with each field
 </script>
 @include('features.caseregister.modals.case_register_in')
 @endsection
