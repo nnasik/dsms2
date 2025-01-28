@@ -157,7 +157,9 @@
                                     <a href="{{route('frontpage.pdf',$frontpage->id)}}" target="_blank"
                                         class="btn btn-primary m-1"><i class="fa fa-download" aria-hidden="true"></i>
                                         Front Page A4</a>
-
+                                    <a
+                                        class="btn btn-primary m-1" target="_blank" href="{{route('minutes.pdf',$frontpage->id)}}"><i class="fa fa-download" aria-hidden="true"></i>
+                                        Minutes Sheet A4</a>
                                 </div>
                             </div>
                         </div>

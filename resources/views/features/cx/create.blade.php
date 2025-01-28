@@ -149,10 +149,27 @@
 
 </div>
 <script>
+
+    const nextButton = document.getElementById('next');
     // Flags to track if the user has interacted with each field
     let nicTouched = false;
     let scNameTouched = false;
     let phoneTouched = false;
+    
+    // Flags to track if the user has interacted with each field
+    let isNICValidated = true;
+    let isNameValidated = false;
+    let isPhoneValidated = true;
+
+    function enableServices(){
+        nextButton.classList.remove('disabled');
+        nextButton.classList.add('btn-primary');
+    }
+
+    function disableServices(){
+        nextButton.classList.remove('btn-primary');
+        nextButton.classList.add('disabled');
+    }
 
     // Validate NIC
     function validateNIC() {
