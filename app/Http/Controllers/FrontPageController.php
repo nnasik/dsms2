@@ -10,6 +10,7 @@ use Dompdf\Options;
 use Session;
 use Redirect;
 use Auth;
+use App\Models\User;
 use App\Services\NumberToWordsService;
 
 
@@ -196,5 +197,21 @@ class FrontPageController extends Controller{
             'Content-Type'=> 'application/pdf',
         ]);
         
+    }
+
+    public function documents($keyword = null){
+        $user = Auth::user();
+        $permission = $user->hasPermissionTo('view.documents');
+        if ($permission) {
+            $data['files'] = FrontPage::all()->reverse();
+            if(isset($keyword)){
+                $data['files'] = FrontPage::where('file_no')->get()->reverse();
+            }
+            
+            return view('features.frontpage.documents')->with($data);
+        }
+        else {
+            return redirect()->back();
+        }
     }
 }

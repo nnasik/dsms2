@@ -9,6 +9,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\FrontPageController;
 use App\Http\Controllers\CaseRegisterController;
+use App\Http\Controllers\FormatController;
 use App\Http\Controllers\MovementCardController;
 use App\Http\Controllers\ServiceConsumerController;
 
@@ -97,9 +98,14 @@ Route::group(['middleware' => ['auth','check.status']], function () {
     Route::post('/blog/unlikepost', [BlogController::class,'unlike_post']);
 
     // Template
-    Route::get('/template', [TemplateController::class,'index'])->name('letter.templates');
+    Route::get('/format', [FormatController::class,'index'])->name('format.index');
+    Route::get('/format/pubmeeting', [FormatController::class,'pubMeetingPDF'])->name('format.pubMeetingPDF');
+    
+    // Forms & Formats
+    //Route::get('/template', [TemplateController::class,'index'])->name('letter.templates');
 
     Route::get('/frontpage', [FrontPageController::class,'index'])->name('frontpage.index');
+    Route::get('/documents', [FrontPageController::class,'documents'])->name('view.documents');
     Route::get('/frontpage/pdf/{id}', [FrontPageController::class,'generatePDF'])->name('frontpage.pdf');
     Route::post('/frontpage/sheetspage', [FrontPageController::class,'sheetsPdf'])->name('sheetspage.pdf');
     Route::get('/frontpage/minutessheet/{id}', [FrontPageController::class,'minutesPdf'])->name('minutes.pdf');

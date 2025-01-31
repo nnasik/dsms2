@@ -70,7 +70,7 @@
           <a href="/mail" class="nav-link {{ request()->is('mail') ? 'active' : '' }}">
             <i class="nav-icon fas fa-envelope"></i>
             <p>
-              Mail Tracking
+              Mail
             </p>
           </a>
         </li>
@@ -81,7 +81,7 @@
           <a href="/reservations" class="nav-link {{ request()->is('reservation') ? 'active' : '' }}">
             <i class="nav-icon fas fa-building"></i>
             <p>
-              Reservation
+              Hall Reservation
             </p>
           </a>
         </li>
@@ -122,11 +122,32 @@
         <li class="nav-item">
           <a href="{{route('frontpage.index')}}" class="nav-link {{ request()->is('frontpage') ? 'active' : '' }}">
             <i class="nav-icon fa fa-file-pdf"></i>
+            
             <p>
               My Documents
             </p>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a href="{{route('format.index')}}" class="nav-link {{ request()->is('format') ? 'active' : '' }}">
+            <i class="nav-icon fa fa-table-list"></i>
+            <p>
+              Formats
+            </p>
+          </a>
+        </li>
+
+        @can('view.documents')
+        <li class="nav-item">
+          <a href="{{route('view.documents')}}" class="nav-link {{ request()->is('documents') ? 'active' : '' }}">
+            <i class="nav-icon fa-solid fa-book"></i>
+            <p>
+              Documents
+            </p>
+          </a>
+        </li>
+        @endcan
 
         <li class="nav-item">
           <a href="{{route('cx.index')}}" class="nav-link {{ request()->is('cx') ? 'active' : '' }}">

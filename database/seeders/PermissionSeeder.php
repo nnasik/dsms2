@@ -16,22 +16,9 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        // Users Permission
-        Permission::create(['name' => 'manage.users']);
-
-        // Permisssion 
-        Permission::create(['name' => 'manage.permissions']);
-
-        // Mail Permission
-        Permission::create(['name' => 'view.mail']);
-        Permission::create(['name' => 'manage.mail']);
-        Permission::create(['name' => 'summary.mail']);
-
-        
-
-
         $su = User::find('922392048V');
-
+        $su->status = 'active';
+        $su->save();
         $su->givePermissionTo('manage.users');
         $su->givePermissionTo('manage.permissions');
     }
