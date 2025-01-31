@@ -214,4 +214,33 @@ class FrontPageController extends Controller{
             return redirect()->back();
         }
     }
+
+    public function loancardPDF($id){
+
+        $frontpage = FrontPage::findOrFail($id);
+        $data['frontpage'] = $frontpage;
+
+        $pdf = new Dompdf();
+        $html = view('features.frontpage.templates.loancard')->with($data)->render();
+        $pdf->loadHtml($html);
+
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isPhpEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        
+        $pdf->setOptions($options);
+        
+        $pdf->setBasePath(public_path());
+
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+
+        // Create a response with PDF content and appropriate headers
+        return new Response($pdf->output(),200,[
+            'Content-Type'=> 'application/pdf',
+        ]);
+        
+    }
+    
 }

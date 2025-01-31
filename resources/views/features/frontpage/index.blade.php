@@ -188,9 +188,9 @@
                                         class="btn btn-primary m-1"><i class="fa fa-download" aria-hidden="true"></i>
                                         Front Page A4</a>
 
-                                    <a href="{{route('frontpage.pdf',$frontpage->id)}}" target="_blank"
+                                    <a href="{{route('loancard.pdf',$frontpage->id)}}" target="_blank"
                                         class="btn btn-primary m-1"><i class="fa fa-download" aria-hidden="true"></i>
-                                        Movement Card A4</a>
+                                        Loan Card A4</a>
 
                                 </div>
                             </div>
