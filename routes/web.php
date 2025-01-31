@@ -100,6 +100,8 @@ Route::group(['middleware' => ['auth','check.status']], function () {
     // Template
     Route::get('/format', [FormatController::class,'index'])->name('format.index');
     Route::get('/format/pubmeeting', [FormatController::class,'pubMeetingPDF'])->name('format.pubMeetingPDF');
+    Route::get('/format/intmeeting', [FormatController::class,'intMeetingPDF'])->name('format.intMeetingPDF');
+    Route::get('/format/training', [FormatController::class,'trainingAttendancePDF'])->name('format.trainingPDF');
     
     // Forms & Formats
     //Route::get('/template', [TemplateController::class,'index'])->name('letter.templates');
