@@ -17,7 +17,7 @@
                     <div class="col">
                         <div class="input-group mr-3">
                             <span class="input-group-text" id="basic-addon1">Program Name</span>
-                            <input type="text" id="program_name-int" class="form-control" placeholder="Eg. Divisional Cultural Program">
+                            <input type="text" id="program_name-int" class="form-control" placeholder="Eg. Clean Sri Lanka Awareness Program">
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="col">
                         <div class="input-group mr-3">
                             <span class="input-group-text" id="basic-addon1">Venue</span>
-                            <input type="text" id="venue-int" class="form-control" placeholder="Eg. Conferece Hall- Divisional Secretariat Oddamavadi">
+                            <input type="text" id="venue-int" class="form-control" placeholder="Eg. Main Hall">
                         </div>
                     </div>
                 </div>

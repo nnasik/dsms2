@@ -17,7 +17,7 @@
                     <div class="col">
                         <div class="input-group mr-3">
                             <span class="input-group-text" id="basic-addon1">Training Program</span>
-                            <input type="text" id="program_name-tra" class="form-control" placeholder="Eg. Divisional Cultural Program">
+                            <input type="text" id="program_name-tra" class="form-control" placeholder="Eg. Aswasuma Enumuration Traning">
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                     <div class="col">
                         <div class="input-group mr-3">
                             <span class="input-group-text" id="basic-addon1">Header Line</span>
-                            <textarea id="header_line-tra" class="form-control" rows=3></textarea>
+                            <textarea id="header_line-tra" class="form-control" rows=3 placeholder="Attendance of Participans"></textarea>
                         </div>
                     </div>
                 </div>

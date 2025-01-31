@@ -17,7 +17,7 @@
                     <div class="col">
                         <div class="input-group mr-3">
                             <span class="input-group-text" id="basic-addon1">Program Name</span>
-                            <input type="text" id="program_name" class="form-control" placeholder="Eg. Divisional Cultural Program">
+                            <input type="text" id="program_name" class="form-control" placeholder="Eg. Divisional Cultural Committee Meeting">
                         </div>
                     </div>
                 </div>
