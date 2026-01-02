@@ -37,7 +37,7 @@
     <div class="row m-0 p-0">
         <div class="" style="text-align: center;width: 100%; margin:0;padding:0">
             <img class="logo"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Emblem_of_Sri_Lanka.svg/800px-Emblem_of_Sri_Lanka.svg.png"
+                src="{{asset(/public/img/frontpage/logo.png)}}"
                 alt="" srcset="">
             <br>
             <br>
